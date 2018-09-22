@@ -69,8 +69,8 @@ pip install -r requirements.txt
 	* set FLASK_APP=main
 	* set env=dev
 	* set "db_url=postgres://user:password@dbhost:port/database"
-	* set "secret_key=local_secret_key"
-	* set "secret_salt=local_salt"
+	* set "secret_key=your_local_secret_key"
+	* set "secret_salt=your_local_salt"
 	* set "mail_username=your_email"
 	* set "mail_password=your_email_password"
 	* set "admin_email=admin_email"
@@ -84,57 +84,77 @@ pip install -r requirements.txt
 	* set mail_password=
 	* set admin_email=
 
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
+5. Activate the environment (from the previous folder):
 ```
-Give an example
+activate
 ```
 
-### And coding style tests
-
-Explain what these tests test and why
-
+6. Move back to the folder where your project is. Install webpack/JavaScript dependencies:
 ```
-Give an example
+npm install
 ```
 
-## Deployment
+7. Initialize the database:
+```
+flask dbinit -c
+```
 
-Add additional notes about how to deploy this on a live system
+8. Run the app:
+```
+flask run
+```
 
-## Built With
+9. Open a browser and go http://127.0.0.1:5000/. It will show the 404 error page because there is no any route defined for the root. If you see
 
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
+## How to debug the code
+We prefer MS VS Code. It's free and have tons of plugins for any language and framework. We use plugins for Python, Flask, Vue. To debug Python code you need to do some setups:
 
-## Contributing
+1. Open settings: File -> Preferences --> Settings
+2. In the Workspace settings section add the following data:
+```
+{
+    "python.pythonPath": "path_to_you_venv/Scripts/python.exe",
+    "python.venvPath": "path_to_you_venv/Scripts/activate",
+    "python.linting.pylintEnabled": false,
+}
+```
+3. Follow [this instructions](https://code.visualstudio.com/docs/python/tutorial-flask#_run-the-app-in-the-debugger) to set up launch.json. In our case you should have something like that:
+```
+{
+	"name": "Python Experimental: Flask",
+	"type": "pythonExperimental",
+	"request": "launch",
+	"module": "flask",
+	"env": {
+		"FLASK_APP": "main.py"
+	},
+	"args": [
+		"run",
+		"--no-debugger",
+		"--no-reload"
+	   //"dbinit", 
+	   //"-u"
+	],
+	"jinja": true
+}
+```
+4. To start debugging, open the Terminal, activate the environment from there, the save as we did from the command line, then select Debug-->Start debugging.
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+## Important note about this free version
+
+This version of our SaaS boilerplate is free and it will NOT have all the features. 
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+[SaaS Idea](https://www.saas-idea.com)
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+You CAN NOT use this project for any commercial purposes.
+This project is licensed under the Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0) License - see the [CC BY-NC 3.0](https://creativecommons.org/licenses/by-nc/3.0/) file for details
 
-## Acknowledgments
+## Feedback
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Please drop a line at [info@saas-idea.com](info@saas-idea.com) if you find a bug.
