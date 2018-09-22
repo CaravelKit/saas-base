@@ -1,0 +1,66 @@
+@import "~bootstrap/scss/bootstrap";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-align: center;
+    align-items: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #f5f5f5;
+}
+
+.form-auth {
+    width: 100%;
+    max-width: 330px;
+    padding: 15px;
+    margin: auto;
+}
+.form-auth .checkbox {
+    font-weight: 400;
+}
+.form-auth .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+}
+.form-auth .form-control:focus {
+    z-index: 2;
+    outline: none;
+    box-shadow: none;
+}
+
+.btn-primary {
+    background-color: #255a94;
+}
+.form-auth label {
+    text-align: left;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.form-auth input {
+    margin-bottom: 15px;
+}
+
+.errors-list {
+    list-style: none;
+    text-align: left;
+    background-color: #f79b9b;
+    padding: 12px;
+    border-radius: 3px;
+    color: #5f1d1d;
+    border: 1px solid #de8383; 
+}
+
+/*** Bootstrap extension ***/
+.btn-primary {
+    border: none;
+}

@@ -1,0 +1,12 @@
+{% extends "baseAuth.html" %}
+{% block title %} Email confirmed {% endblock %}
+{%block page_title%} Thanks for confirming your email! {%endblock%}
+{% block page_content %}
+    <p> Now you can login to the system.</p> 
+    <p>Please click the <a href="/login">login link</a> if you are not redirected automatically in several seconds.</p>
+    <script>
+        window.setTimeout(function(){
+            window.location.href = "/login";
+        }, 5000);
+    </script>
+{% endblock %}
