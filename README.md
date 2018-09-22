@@ -20,8 +20,9 @@ This free SaaS boilerplate allows you to create a working SaaS application with 
 #### Database: ####
 * PostgreSQL
 #### Backend: ####
-* Flask / Python / SQLAlchemy
-* Frontend:
+* Flask / Python 3 / SQLAlchemy
+
+#### Frontend: #### 
 * ES6 JavaScript
 * Vue
 * Axios
@@ -38,33 +39,51 @@ This free SaaS boilerplate allows you to create a working SaaS application with 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+Follow instruction to install, set up and run this boilerplate to start your SaaS quicker.
 
 ### Prerequisites
 
-What things you need to install the software and how to install them
+Before we start make sure you have installed Python 3 and Node.js. Please follow the official instructions. Also, you need to have a PostgreSQL database handy. If you don't want to install it you can use ElephantSQL service, they have a free plan: [https://www.elephantsql.com/plans.html](https://www.elephantsql.com/plans.html).
 
-```
-Give examples
-```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+1. Download the full zip or pull code from the repository, [here](https://help.github.com/articles/which-remote-url-should-i-use/) you can find full instruction:
 ```
-Give the example
+git remote add origin https://github.com/SaaS-Idea/saas-boilerplate.git
 ```
-
-And repeat
-
+2. Create a virtual environment (not necessarily but highly recommended):
 ```
-until finished
+python -m venv venv
 ```
+(First 'venv' is a command, the second one is a new folder for a virtual environment. Or you can call it whatever.)
 
-End with an example of getting some data out of the system or using it for a little demo
+3. Move to the venv folder and install Python dependencies:
+```
+cd venv
+pip install -r requirements.txt
+```
+4. Add necessarily environment variables:
+* Find venv/Scripts/activate.bat file, open in a text editor (__Important! Don't use Notepad++ as for some reason it spoils the file.__)
+* Add the following variables before _:END_:
+	* set FLASK_APP=main
+	* set env=dev
+	* set "db_url=postgres://user:password@dbhost:port/database"
+	* set "secret_key=local_secret_key"
+	* set "secret_salt=local_salt"
+	* set "mail_username=your_email"
+	* set "mail_password=your_email_password"
+	* set "admin_email=admin_email"
+* The same folder find deactivate.bat and add the following strings before _:END_:
+	* set FLASK_APP=
+	* set env=
+	* set db_url=
+	* set secret_key=
+	* set secret_salt=
+	* set mail_username=
+	* set mail_password=
+	* set admin_email=
+
 
 ## Running the tests
 
