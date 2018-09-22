@@ -104,7 +104,7 @@ flask dbinit -c
 flask run
 ```
 
-9. Open a browser and go http://127.0.0.1:5000/. It will show the 404 error page because there is no any route defined for the root. If you see
+9. Open a browser and go http://127.0.0.1:5000/. It will show the 404 error page because there is no any route defined for the root. If you see this page it means everything works fine! Feel free to explore, it's your code now!
 
 ## How to debug the code
 We prefer MS VS Code. It's free and have tons of plugins for any language and framework. We use plugins for Python, Flask, Vue. To debug Python code you need to do some setups:
