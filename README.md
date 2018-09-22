@@ -140,7 +140,12 @@ We prefer MS VS Code. It's free and have tons of plugins for any language and fr
 ```
 4. To start debugging, open the Terminal, activate the environment from there, the save as we did from the command line, then select Debug-->Start debugging.
 
+## How to update the database
 
+Every time when you change something in your models, run the following command to update the database:
+```
+flask dbinit -u
+```
 
 ## Important note about this free version
 
