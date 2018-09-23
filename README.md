@@ -50,7 +50,8 @@ Before we start make sure you have installed Python 3 and Node.js. Please follow
 
 1. Download the full zip or pull code from the repository, [here](https://help.github.com/articles/which-remote-url-should-i-use/) you can find full instruction:
 ```
-git remote add origin https://github.com/SaaS-Idea/saas-boilerplate.git
+git clone https://github.com/SaaS-Idea/saas-boilerplate.git
+cd saas-boilerplate
 ```
 2. Create a virtual environment (not necessarily but highly recommended):
 ```
@@ -58,12 +59,8 @@ python -m venv venv
 ```
 (First 'venv' is a command, the second one is a new folder for a virtual environment. Or you can call it whatever.)
 
-3. Move to the venv folder and install Python dependencies:
-```
-cd venv
-pip install -r requirements.txt
-```
-4. Add necessarily environment variables:
+
+3. Add necessarily environment variables:
 * Find venv/Scripts/activate.bat file, open in a text editor (__Important! Don't use Notepad++ as for some reason it spoils the file.__)
 * Add the following variables before _:END_:
 	* set FLASK_APP=main
@@ -88,9 +85,14 @@ pip install -r requirements.txt
 	* set mail_password=
 	* set admin_email=
 
-5. Activate the environment (from the previous folder):
+4. Activate the environment:
 ```
-activate
+venv\Scripts\activate.bat
+```
+
+5. Move to the venv folder and install Python dependencies:
+```
+pip install -r requirements.txt
 ```
 
 6. Move back to the folder where your project is. Install webpack/JavaScript dependencies:
