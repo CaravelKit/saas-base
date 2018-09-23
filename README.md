@@ -94,17 +94,23 @@ activate
 npm install
 ```
 
-7. Initialize the database:
+7. Build the javascript code and styles:
+```
+npm run dev
+```
+Note, there is another config, for production that you can run with "npm run prod" - in this version you will get well zipped (but not readable) code.
+
+8. Initialize the database:
 ```
 flask dbinit -c
 ```
 
-8. Run the app:
+9. Run the app:
 ```
 flask run
 ```
 
-9. Open a browser and go http://127.0.0.1:5000/. It will show the 404 error page because there is no any route defined for the root. If you see this page it means everything works fine! Feel free to explore, it's your code now!
+10. Open a browser and go http://127.0.0.1:5000/. It will show the 404 error page because there is no any route defined for the root. If you see this page it means everything works fine! Feel free to explore, it's your code now!
 
 ## How to debug the code
 We prefer MS VS Code. It's free and have tons of plugins for any language and framework. We use plugins for Python, Flask, Vue. To debug Python code you need to do some setups:
@@ -158,8 +164,9 @@ This version of our SaaS boilerplate is free and it will NOT have all the featur
 ## License
 
 You CAN NOT use this project for any commercial purposes.
-This project is licensed under the Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0) License - see the [CC BY-NC 3.0](https://creativecommons.org/licenses/by-nc/3.0/) file for details
+This project is licensed under the Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0) License - see the [CC BY-NC 3.0](https://creativecommons.org/licenses/by-nc/3.0/) file for details.
+If you are interested in the full-functional version please check our website [www.saas-idea.com](https://www.saas-idea.com) for pricing and conditions.
 
 ## Feedback
 
-* Please drop a line at [info@saas-idea.com](info@saas-idea.com) if you find a bug.
+* If you find a bug please open an issue or drop us a line at [info@saas-idea.com](info@saas-idea.com).
