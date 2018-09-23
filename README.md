@@ -71,6 +71,8 @@ pip install -r requirements.txt
 	* set "db_url=postgres://user:password@dbhost:port/database"
 	* set "secret_key=your_local_secret_key"
 	* set "secret_salt=your_local_salt"
+	* set mail_server=your_email_server
+	* set mail_port=usually_465
 	* set "mail_username=your_email"
 	* set "mail_password=your_email_password"
 	* set "admin_email=admin_email"
@@ -80,6 +82,8 @@ pip install -r requirements.txt
 	* set db_url=
 	* set secret_key=
 	* set secret_salt=
+	* set mail_server=
+	* set mail_port=
 	* set mail_username=
 	* set mail_password=
 	* set admin_email=
