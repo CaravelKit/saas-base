@@ -32,8 +32,8 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ['db_url'] # Store it in the hosting config
     SECRET_KEY = os.environ['secret_key'] # Store it in the hosting config
     SECRET_SALT = os.environ['secret_salt'] # Store it in the hosting config
-    MAIL_SERVER = 'mail.privateemail.com'
-    MAIL_PORT = 465
+    MAIL_SERVER = os.environ['mail_server']
+    MAIL_PORT = os.environ['mail_port']
     MAIL_USE_SSL = True
     MAIL_USE_TLS = False
     MAIL_USERNAME = os.environ['mail_username']
