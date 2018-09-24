@@ -183,6 +183,16 @@ Every time when you change something in your models, run the following command t
 ```
 flask dbinit -u
 ```
+## What does the app look like?
+Before you even clone anything it would be nice to show you what eventually you would own. There are 4 screenshots:
+* Login
+![Login page](https://www.saas-idea.com/static/images/login.png)
+* Register
+![Register page](https://www.saas-idea.com/static/images/register.png)
+* Confirmed
+![Confirmed page](https://www.saas-idea.com/static/images/confirmed.png)
+* Dashboard
+![Dashboard page](https://www.saas-idea.com/static/images/dashboard.png)
 
 ## Important note about this free version
 
