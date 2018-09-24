@@ -85,38 +85,63 @@ python -m venv venv
 	* set mail_password=
 	* set admin_email=
 
-4. Activate the environment:
+Note: if you use privateemail.com for your email you can set up the following settings:
 ```
-venv\Scripts\activate.bat
+set "mail_server=mail.privateemail.com"
+set "mail_port=465"
+```
+### Setting up (quick, automate)
+Just run the command:
+```
+init
+```
+As soon as you see the following info you can open your browser:
+```
+* Serving Flask app "main"
+* Environment: production
+  WARNING: Do not use the development server in a production environment.
+  Use a production WSGI server instead.
+* Debug mode: off
+* Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+```
+### Setting up (slow, manual)
+
+1. Activate the environment:
+```
+venv/Scripts/activate.bat
 ```
 
-5. Move to the venv folder and install Python dependencies:
+2. Move to the venv folder and install Python dependencies:
 ```
 pip install -r requirements.txt
 ```
+If you see some error you definitely have to update your pip:
+```
+python -m pip install --upgrade pip
+```
 
-6. Move back to the folder where your project is. Install webpack/JavaScript dependencies:
+3. Move back to the folder where your project is. Install webpack/JavaScript dependencies:
 ```
 npm install
 ```
 
-7. Build the javascript code and styles:
+4. Build the javascript code and styles:
 ```
 npm run dev
 ```
 Note, there is another config, for production that you can run with "npm run prod" - in this version you will get well zipped (but not readable) code.
 
-8. Initialize the database:
+5. Initialize the database:
 ```
 flask dbinit -c
 ```
 
-9. Run the app:
+6. Run the app:
 ```
 flask run
 ```
 
-10. Open a browser and go http://127.0.0.1:5000/. It will show the 404 error page because there is no any route defined for the root. If you see this page it means everything works fine! Feel free to explore, it's your code now!
+7. Open a browser and go http://127.0.0.1:5000/. It will show the 404 error page because there is no any route defined for the root. If you see this page it means everything works fine! Feel free to explore, it's your code now!
 
 ## How to debug the code
 We prefer MS VS Code. It's free and have tons of plugins for any language and framework. We use plugins for Python, Flask, Vue. To debug Python code you need to do some setups:
