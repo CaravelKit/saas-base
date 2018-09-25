@@ -194,6 +194,9 @@ Before you even clone anything it would be nice to show you what eventually you 
 * Dashboard
 ![Dashboard page](https://www.saas-idea.com/static/images/dashboard.png)
 
+## Future features
+We want to build the great product and we believe it's possible only when collaborate with our users. So, we create a survey to figure out what is most important for you. Please [fill it up](https://goo.gl/forms/rCjQPeqgdPkTnfmB2) and we will develop next feature on your choice! 
+
 ## Important note about this free version
 
 This version of our SaaS boilerplate is free and it will NOT have all the features. 
