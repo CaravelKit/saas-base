@@ -35,7 +35,16 @@ This free SaaS boilerplate allows you to create a working SaaS application with 
 #### Project organize: ####
 * Webpack 4
 
-
+## What does the app look like?
+Before you even clone anything it would be nice to show you what eventually you would own. There are 4 screenshots:
+* Login
+![Login page](https://www.saas-idea.com/static/images/login.png)
+* Register
+![Register page](https://www.saas-idea.com/static/images/register.png)
+* Confirmed
+![Confirmed page](https://www.saas-idea.com/static/images/confirmed.png)
+* Dashboard
+![Dashboard page](https://www.saas-idea.com/static/images/dashboard.png)
 
 ## Getting Started
 
@@ -183,19 +192,9 @@ Every time when you change something in your models, run the following command t
 ```
 flask dbinit -u
 ```
-## What does the app look like?
-Before you even clone anything it would be nice to show you what eventually you would own. There are 4 screenshots:
-* Login
-![Login page](https://www.saas-idea.com/static/images/login.png)
-* Register
-![Register page](https://www.saas-idea.com/static/images/register.png)
-* Confirmed
-![Confirmed page](https://www.saas-idea.com/static/images/confirmed.png)
-* Dashboard
-![Dashboard page](https://www.saas-idea.com/static/images/dashboard.png)
 
 ## Future features
-We want to build the great product and we believe it's possible only when collaborate with our users. So, we create a survey to figure out what is most important for you. Please [fill it up](https://goo.gl/forms/rCjQPeqgdPkTnfmB2) and we will develop next feature on your choice! 
+We want to build the great product and we believe it's possible only when we collaborate with our users. So, we created a survey to figure out what is most important for you. Please [fill it up](https://goo.gl/forms/rCjQPeqgdPkTnfmB2) and we will develop next feature on your choice! 
 
 ## Important note about this free version
 
