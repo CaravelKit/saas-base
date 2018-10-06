@@ -9,6 +9,7 @@ This free SaaS boilerplate allows you to create a working SaaS application with 
 * Autoupdating existing database
 * Simple responsive web interface with header, left collapsing menu, central part, and fixed status bar
 * Handling 404 and 500 errors
+* Breadcrumbs component
 
 
 ### Features: ###
