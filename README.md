@@ -104,6 +104,10 @@ Just run the command:
 ```
 init
 ```
+Or, from a terminal:
+```
+./init.bat
+```
 As soon as you see the following info you can open your browser:
 ```
 * Serving Flask app "main"

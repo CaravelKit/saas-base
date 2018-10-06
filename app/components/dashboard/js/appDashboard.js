@@ -7,13 +7,34 @@ import 'bootstrap';
 import UserProfile from './views/userProfile.vue';
 import SamplePage from './views/samplePage.vue';
 import PageNotFound from './views/pageNotFound.vue';
+import Breadcrumbs from './breadcrumbs.vue'
 
 Vue.use(VueRouter);
 
 var routes = [
-    { path: '/dashboard', component: SamplePage },
-    { path: '/dashboard/user/profile', component: UserProfile },
-    { path: '/dashboard/sample', component: SamplePage },
+    { 
+        path: '/dashboard', 
+        component: SamplePage
+    },
+    { 
+        path: '/dashboard/user/profile', 
+        component: UserProfile,
+        name: 'userProfile',
+        meta: {
+            breadcrumb: [
+                {   name: 'User'    },
+                {   name: 'Profile' } // add 'link' field with name or the route
+            ]
+        } 
+    },
+    { 
+        path: '/dashboard/sample', component: SamplePage,
+        meta: {
+            breadcrumb: [
+                {   name: 'Pages'    },
+                {   name: 'Sample sub menu' } // add 'link' field with name or the route
+            ]
+        }  },
     { path: "*", component: PageNotFound }
 ];
 
@@ -24,7 +45,11 @@ var router = new VueRouter({
 
 new Vue({
     el: '#dashboardApp',
-    components: { SamplePage, UserProfile },
+    components: { 
+        SamplePage, 
+        UserProfile, 
+        'breadcrumbs': Breadcrumbs 
+    },
     router,
     data: {
         sideBarOpened: true
