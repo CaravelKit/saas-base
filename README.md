@@ -232,7 +232,7 @@ This version of our SaaS boilerplate is free and it will NOT have all the featur
 
 ## License
 
-Copyright (c) 2018 SaaS Idea [www.saas-idea.com (www.saas-idea.com) under the [MIT license](https://opensource.org/licenses/MIT).
+Copyright (c) 2018 SaaS Idea [www.saas-idea.com] (www.saas-idea.com) under the [MIT license](https://opensource.org/licenses/MIT).
 If you are interested in the full-functional version please check our website [www.saas-idea.com](https://www.saas-idea.com) for pricing and conditions.
 
 ## Feedback
