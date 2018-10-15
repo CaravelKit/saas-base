@@ -232,8 +232,7 @@ This version of our SaaS boilerplate is free and it will NOT have all the featur
 
 ## License
 
-You CAN NOT use this project for any commercial purposes.
-This project is licensed under the Attribution-NonCommercial 3.0 Unported (CC BY-NC 3.0) License - see the [CC BY-NC 3.0](https://creativecommons.org/licenses/by-nc/3.0/) file for details.
+Copyright (c) 2018 SaaS Idea [www.saas-idea.com (www.saas-idea.com) under the [MIT license](https://opensource.org/licenses/MIT).
 If you are interested in the full-functional version please check our website [www.saas-idea.com](https://www.saas-idea.com) for pricing and conditions.
 
 ## Feedback
