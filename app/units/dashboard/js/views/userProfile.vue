@@ -25,7 +25,7 @@
 
 <script>
     //const axios = require('axios');
-    import { httpService } from '@app/components/common/httpService.js'; 
+    import { httpService } from '@app/units/common/httpService.js'; 
     export default {
         name: 'UserProfile',
         data: function(){

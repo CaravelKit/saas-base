@@ -106,8 +106,8 @@ body.fixed-nav #content-wrapper {
     vertical-align: 0;
     border: 0;
     font-weight: 900;
-    content: '\f105';
     font-family: 'Font Awesome 5 Free';
+    content: '\f105';
 }
 
 .navbar-nav .nav-item.dropdown.show .dropdown-toggle::after {
@@ -340,6 +340,26 @@ body.fixed-nav #content-wrapper {
 .card-register {
     max-width: 40rem;
 }
+.loader {
+    font-size: 38px;
+    color: #a9b6c3;
+}
+.loader-in-button {
+    margin-right: 5px;
+}
+.icon-green {
+    color: #3baf33;
+    margin-right: 5px;
+}
+.modal-footer-info {
+    display: inline-block;
+    width: 100%;
+}
+.modal-footer-buttons-block {
+    display: inline-block;
+}
+
+/** Form ***/
 
 .form-label-group {
     position: relative;
@@ -434,7 +454,15 @@ footer.sticky-footer .status-bar {
         width: calc(100% - 90px);
     }
 }
-
+.table-custom {
+    font-size: smaller;
+    border-left: 1px solid #dee2e6;
+    border-right: 1px solid #dee2e6;
+}
+.table-custom thead th {
+    vertical-align: bottom;
+    border-bottom: 1px solid #dee2e6;
+}
 /*** Forms ***/
 
 
@@ -444,9 +472,9 @@ footer.sticky-footer .status-bar {
     color: rgba(255,255,255,.8);
 }
 
-button.btn {
+.btn {
     height: 38px;
-    color: #f6f8fa;
+    color: #5b5c5d;
     cursor: pointer;
     border: none;
     padding: 0 20px;
@@ -454,8 +482,34 @@ button.btn {
     outline: 0;
     margin: 10px 0;
 }
+.btn-secondary {
+    color: #ffffff;
+}
+.btn:active, .btn:hover, .btn:focus {
+    outline: none;
+}
 .btn-primary {
-    background-color: #356fa9;
+    color: #f6f8fa !important;
+    background-color: #356fa9 !important;
+}
+.btn-primary:hover {
+    background-color: #3372b5;
+    border-color: #03458b;
+}
+.btn-pause {
+    color: #f6f8fa !important;
+    background-color: #786380 !important;
+}
+.btn-cancel {
+    color: #f6f8fa !important;
+    background-color: #b33a1e !important;
+}
+.btn-resume {
+    color: #f6f8fa !important;
+    background-color: #3b943a !important;
+}
+.btn-cancel:hover, .btn-pause:hover, .btn-resume {
+    color: #ffffff;
 }
 .btn-link {
     border: none;
@@ -474,7 +528,21 @@ button.btn {
     box-shadow: 0 0 0 0.2rem rgba(167,184,202,.12);
     background-color: #fff;
 }
-
+.modal-dialog {
+    max-width: 1000px !important;
+}
+.modal-dialog-small {
+    max-width: 500px !important;
+}
+.modal-footer {
+    display: inline;
+    padding: 1rem;
+    border-top: 1px solid #e9ecef;
+}
+.modal-body {
+    max-height: 600px;
+    overflow-y: scroll;
+}
 .alert {
     border-radius: 2px;
 }

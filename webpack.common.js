@@ -4,10 +4,10 @@ const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
     entry: {
-        auth: './app/components/auth/js/appAuth.js',
-        dashboard: './app/components/dashboard/js/appDashboard.js',
-        authStyles: './app/components/auth/js/authStyles.js',
-        dashboardStyles: './app/components/dashboard/js/dashboardStyles.js'
+        auth: './app/units/auth/js/appAuth.js',
+        dashboard: './app/units/dashboard/js/appDashboard.js',
+        authStyles: './app/units/auth/js/authStyles.js',
+        dashboardStyles: './app/units/dashboard/js/dashboardStyles.js'
     },
     output: {
         filename: '[name].bundle.js',
@@ -15,12 +15,14 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin(['static/js']), // <== This is Dist folder by fact
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        //new ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(en\fr\ru)$/)
     ],
     resolve: {
         alias: {
           'vue$': 'vue/dist/vue.esm.js', // 'vue/dist/vue.common.js' for webpack 1
-          '@app': path.resolve(__dirname, 'app')
+          '@app': path.resolve(__dirname, 'app'),
+          //'@moment': path.resolve(__dirname, 'node_modules/moment/min/moment.min.js')
         }
     },
     module: {

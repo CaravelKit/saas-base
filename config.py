@@ -13,6 +13,7 @@ class Config(object):
     CSRF_KEY = ''
     MAIL_SUBJECT_PREFIX = 'Your service name'
     COMPANY_NAME = 'Your company name' # Change to your company name
+    TRIAL_PERIOD_IN_DAYS = 14 # Change to your trial (in days, it's 2 weeks by default). Put 0 if no trial
 
 
 class ProductionConfig(Config):
@@ -41,6 +42,7 @@ class DevelopmentConfig(Config):
     MAIL_DEFAULT_SENDER = os.environ['mail_username']
     MAIL_PASSWORD = os.environ['mail_password']
     ADMIN_EMAIL = os.environ['admin_email']
+    TRIAL_PERIOD_IN_DAYS = 1 # Change it or remove it
 
 
 class TestingConfig(Config):

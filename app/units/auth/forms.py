@@ -3,7 +3,7 @@ from wtforms import StringField, PasswordField, BooleanField, SubmitField, TextF
 from wtforms.validators import DataRequired, Length, Email, Regexp, EqualTo
 from wtforms import ValidationError
 from wtforms.widgets import TextInput
-from app.models import user_module
+from app.units.auth.models import user_module
 
 
 class VueBoundText(TextInput):

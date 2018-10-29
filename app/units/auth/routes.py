@@ -2,7 +2,8 @@ import uuid
 from flask import render_template, redirect, request, url_for, flash, jsonify, current_app
 from flask_login import login_user, logout_user, login_required, current_user
 from app import db
-from app.models import user_module
+from app.units.auth.models import user_module
+from app.units.billing.models import account_module
 from app.utils.email import send_email
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
     PasswordResetRequestForm, PasswordResetForm, ChangeEmailForm

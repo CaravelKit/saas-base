@@ -1,6 +1,7 @@
 from flask import render_template, redirect, request, url_for, flash, jsonify, current_app
 from flask_login import login_user, logout_user, login_required, current_user
 from app import db
+from app import get_vendor
 
 from . import dashboard_component
 
@@ -28,7 +29,8 @@ def before_request():
 @dashboard_component.route('/dashboard/<path:path>', methods=['GET'])
 @login_required
 def index_page(path):
-    return render_template('dashboard.html', company_name=current_app.config.get('COMPANY_NAME'))
+    vendor = get_vendor()
+    return render_template('dashboard.html', company_name=current_app.config.get('COMPANY_NAME'), vendor_pkey = vendor.get_public_key())
 
 
 # API routes

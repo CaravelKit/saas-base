@@ -19,6 +19,10 @@ csrf = CSRFProtect()
 mail = Mail()
 alembic = Alembic()
 app_path = ''
+vendor = None
+
+def get_vendor():
+    return vendor
 
 def create_app():
     
@@ -34,6 +38,7 @@ def create_app():
     init_global_functions(app)
     register_blueprints(app)
     register_error_handlers(app)
+    init_payment_vendor(app)
     return app
 
 def redefine_delimiters(app):
@@ -52,6 +57,12 @@ def init_db(option, app):
     import app.utils.scaffold as scaffold
     scaffold.reinit_db(option)
 
+def init_payment_vendor(app):
+    global vendor, tst
+    from .units.billing.vendor import Vendor_Stripe # to-do it dynamically
+    vendor = Vendor_Stripe() # to-do: vendor is selected based on config
+    vendor.init_keys()
+
 def initialize_libraries(app):
     from app.utils import scaffold
 
@@ -62,11 +73,12 @@ def initialize_libraries(app):
     alembic.init_app(app)
 
 def register_blueprints(app):
-    from app.components.main import main_component
-    from app.components.auth import auth_component
-    from app.components.dashboard import dashboard_component
+    from app.units.main import main_component # to-do: rename to units
+    from app.units.auth import auth_component
+    from app.units.dashboard import dashboard_component
+    from app.units.dashboard.components.billing import billing_component
 
-    blueprints = [main_component, auth_component, dashboard_component] # Add a new blueprint here
+    blueprints = [main_component, auth_component, dashboard_component, billing_component] # Add a new blueprint here # to-do: automate it
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
     

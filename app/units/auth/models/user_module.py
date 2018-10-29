@@ -7,7 +7,8 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy_utils import UUIDType
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
-from app.models import role_module
+from app.units.auth.models import role_module
+from app.units.billing.models import account_module
 
 #import hashlib
 #from werkzeug.security import generate_password_hash, check_password_hash
@@ -16,6 +17,7 @@ from app.models import role_module
 #from app.exceptions import ValidationError
 from app import login_manager
 from app import db
+from app.units.billing.models.account_module import Account
 
 
 class User(UserMixin, db.Model):
@@ -28,6 +30,8 @@ class User(UserMixin, db.Model):
     role_id = db.Column(UUID(as_uuid=True), db.ForeignKey('Role.id'))
     confirmed = db.Column(db.Boolean, default=False)
     subscribed = db.Column(db.Boolean, default=False)
+    account_id = db.Column(UUID(as_uuid=True), db.ForeignKey('Account.id'))
+    account = db.relationship('Account', back_populates='user')
 
     def __init__(self, **kwargs):
         super(User, self).__init__(**kwargs)
@@ -37,6 +41,8 @@ class User(UserMixin, db.Model):
             else:
                 default_role = role_module.Role.query.filter_by(is_default=True).first()
                 self.role = default_role
+        if self.account == None:
+            self.account = Account()
 
     @login_manager.user_loader
     def load_user(user_id):

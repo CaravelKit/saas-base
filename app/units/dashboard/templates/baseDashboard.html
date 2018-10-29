@@ -10,10 +10,14 @@
         <meta name="description" content="">
         <meta name="author" content="">
         <link rel="icon" type="image/x-icon" href="${ url_for("static", filename="media/favicon.ico") }" />
-        <title>${company_name}} - {% block title %}{% endblock %}</title>
+        <title>${company_name} - {% block title %}{% endblock %}</title>
+        <script src="https://js.stripe.com/v3/"></script>
         <script src="${ url_for("static", filename="js/dashboardStyles.bundle.js")}"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         {% include 'csrf_token.html'  %}
+        <script>
+            window.vendor_pkey = '${vendor_pkey}';
+        </script>
 
     </head>
 
@@ -50,6 +54,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
                         <router-link v-bind:to="'/dashboard/user/profile'" class="dropdown-item">Profile</router-link>
+                        <router-link v-bind:to="'/dashboard/billing'" class="dropdown-item">Billing</router-link>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
                     </div>
@@ -98,13 +103,10 @@
                 </ul>
 
                 <div id="content-wrapper">
-
+                    
                     <div class="container-fluid">
-
-                        <!-- Breadcrumbs-->
                         <breadcrumbs></breadcrumbs>
                         <router-view></router-view>
-
                     </div>
                     <!-- /.container-fluid -->
 
@@ -130,21 +132,21 @@
 
             <!-- Logout Modal-->
             <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Are you sure to leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                    </button>
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Are you sure to leave?</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Please click the "Logout" button below if you want to end your current session.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                        <button class="btn btn-primary" @click="redirect('/logout')">Logout</button>
+                    </div>
+                    </div>
                 </div>
-                <div class="modal-body">Please click the "Logout" button below if you want to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="/logout">Logout</a>
-                </div>
-                </div>
-            </div>
             </div>
         </div>
         <script src="${ url_for("static", filename="js/dashboard.bundle.js")}"></script>

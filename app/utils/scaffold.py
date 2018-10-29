@@ -3,8 +3,8 @@ import click
 from app import db
 from app import alembic
 
-from app.models.user_module import User
-from app.models.role_module import Role
+from app.units.auth.models.user_module import User
+from app.units.auth.models.role_module import Role
 from app.utils.guid_module import GUID
 
 
