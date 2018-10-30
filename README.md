@@ -149,7 +149,8 @@ Warning! This command clears up your database before creating new entities. If y
 </aside>
 ```
 call flask dbinit -c
-``` to
+``` 
+to
 ```
 call flask dbinit -u
 ```
