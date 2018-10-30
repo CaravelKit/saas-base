@@ -144,9 +144,9 @@ Or, from a terminal:
 ```
 ./init.bat
 ```
-<aside class="warning">
-Warning! This command clears up your database before creating new entities. If you want just to update your current database, change the following code:
-</aside>
+
+> Warning! This command clears up your database before creating new entities. If you want just to update your current database, change the following code:
+
 ```
 call flask dbinit -c
 ``` 
