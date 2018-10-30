@@ -5,6 +5,7 @@ class ValidStatus(Enum):
     valid = 'valid'
 
 class AccountStatus(Enum):
+    undefined = ''
     trial = 'trial' # User started trial
     paid = 'paid' # User started subscription and paid
     paused = 'paused' # User stopped next payment until he decides to activate it again

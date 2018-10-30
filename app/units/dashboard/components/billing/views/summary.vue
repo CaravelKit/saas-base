@@ -15,16 +15,6 @@
                 <strong>Your current plan: </strong>{{accountInfo.plan_name || 'Plan is not yet selected.'}}
             </div>
         </div>
-        <div class="row" v-show="!accountInfo.account_status">
-            <div class="col-12">
-                <h6>Start a trial</h6>
-            </div>
-            <div class="col-12">
-                <ul>
-                    <li><a href="/dashboard/billing/plan" class="inner-link">Select a payment plan</a></li>
-                </ul>
-            </div>
-        </div>
         <br>
         <div class="row" v-show="accountInfo.account_status=='trial' || !accountInfo.account_status || accountInfo.account_status=='cancelled'">
             <div class="col-12">

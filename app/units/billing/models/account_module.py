@@ -55,24 +55,30 @@ class Account(db.Model):
 
     # Checks if account is active or not, change fields and the current status
     def check_account_status(self):#trial_status, purchase_status, payment_method_status, plan_status):
-        current_status = ValidStatus.valid
+        current_valid_status = ValidStatus.valid
+        current_account_status = AccountStatus(self.account_status)
         if self.account_status == AccountStatus.trial.value:
             # Check if the trial's not expired yet
             if DateTime.today() > self.trial_expiration:
-                current_status = ValidStatus.invalid
+                current_valid_status = ValidStatus.invalid
+                current_account_status = AccountStatus.undefined
+                self.account_status_text = 'Your trial is expired. Please buy a subscription to continue using the service.'
+                self.trial_expiration = None
+                self.plan_id = ''
         else:
             # Trial is inactive or not started yet. Check payment status.
-            if (self.account_status == AccountStatus.cancelled or 
-                self.account_status == AccountStatus.paused or 
-                self.account_status == None):
-                current_status = ValidStatus.invalid
+            if (self.account_status == AccountStatus.cancelled.value or 
+                self.account_status == AccountStatus.paused.value or 
+                self.account_status == AccountStatus.undefined.value):
+                current_valid_status = ValidStatus.invalid
             else:        
                 # Account status is paid, check if it's still valid
-                if DateTime.today() > self.payment_expiration:
-                    current_status = ValidStatus.invalid
+                if self.payment_expiration != None and DateTime.now() > self.payment_expiration:
+                    current_valid_status = ValidStatus.invalid
 
-        if current_status.value != self.valid_status:
-            self.valid_status = current_status.value
+        if current_valid_status.value != self.valid_status or current_account_status.value != self.account_status:
+            self.valid_status = current_valid_status.value
+            self.account_status = current_account_status.value
             db.session.add(self)
             db.session.commit()
 
