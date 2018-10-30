@@ -144,6 +144,16 @@ Or, from a terminal:
 ```
 ./init.bat
 ```
+<aside class="warning">
+Warning! This command clears up your database before creating new entities. If you want just to update your current database, change the following code:
+</aside>
+```
+call flask dbinit -c
+``` to
+```
+call flask dbinit -u
+```
+
 As soon as you see the following info you can open your browser:
 ```
 * Serving Flask app "main"
@@ -212,6 +222,13 @@ var routes = [
     ...
 ```
 Name your routes to have the access from breadcrumbs to them.
+
+## Trial default period (in days)
+By default, for a production version it's 14 days, for dev it's just a one day (for easier validation). If you want to change this setting, 
+please change the corresponding line in config.py:
+```
+TRIAL_PERIOD_IN_DAYS = 1
+```
 
 ## How to debug the code
 We prefer MS VS Code. It's free and have tons of plugins for any language and framework. We use plugins for Python, Flask, Vue. To debug Python code you need to do some setups:
