@@ -68,7 +68,7 @@ Before you even clone anything it would be nice to show you what eventually you 
 * Billing summary
 ![Billing summary](https://www.saas-idea.com/static/images/BillingSummary.png)
 * Stripe integration
-![Stripe integration](https://www.saas-idea.com/static/images/StripeIntegration.png)
+![Stripe integration](https://www.saas-idea.com/static/images/PlanStripeIntegration.png)
 * Payment method selection
 ![Payment method selection](https://www.saas-idea.com/static/images/PaymentMethodSelectionForm.png)
 * After user selected plan and pai he/she can pause or cancel it
