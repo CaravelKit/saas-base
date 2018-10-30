@@ -13,18 +13,20 @@ This free SaaS boilerplate allows you to create a working SaaS application with 
 * Payments method support (only credit cards for now, by Stripe)
 * Users can select a plan, change it, cancel, pause, resume
 * User can see all the history of payment-related actions
+* As soon as user logs in, the trial is started automatically (that plan that is marked in Stripe default one)
 
 #### Dev's features ####
+* All features are now divided to units and components. Frontend and backend are put side-by-side for easier reference and development.
 * Autocreation of tables for users and roles (2 roles are added automatically: User and Admin)
 * Autoupdating existing database
 * Simple responsive web interface with header, left collapsing menu, central part, and fixed status bar
 * Handling 404 and 500 errors
+* Integration with Google App Engine (reading entities if env variables are not accessible)
 
 #### Small but pretty user friendly features ####
 * Breadcrumbs component
 * Loaders to show user when data is fetching but still not finished
 * Loaders may be easily added to buttons
-
 
 
 ### Features: ###
@@ -61,6 +63,18 @@ Before you even clone anything it would be nice to show you what eventually you 
 ![Confirmed page](https://www.saas-idea.com/static/images/confirmed.png)
 * Dashboard
 ![Dashboard page](https://www.saas-idea.com/static/images/dashboard.png)
+
+### Billing/payments ###
+* Billing summary
+![Billing summary](https://www.saas-idea.com/static/images/BillingSummary.png)
+* Stripe integration
+![Stripe integration](https://www.saas-idea.com/static/images/StripeIntegration.png)
+* Payment method selection
+![Payment method selection](https://www.saas-idea.com/static/images/PaymentMethodSelectionForm.png)
+* After user selected plan and pai he/she can pause or cancel it
+![After user selected plan and pai he/she can pause or cancel it](https://www.saas-idea.com/static/images/UserSelectedPlanAndPaid.png)
+* Billing history
+![Billing history](https://www.saas-idea.com/static/images/BillingHistory.png)
 
 ## Getting Started
 
