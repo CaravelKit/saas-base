@@ -112,6 +112,9 @@ python -m venv venv
 	* set "mail_username=your_email"
 	* set "mail_password=your_email_password"
 	* set "admin_email=admin_email"
+    * set "TEST_STRIPE_PUBLISHABLE_KEY=your test publishable key"
+    * set "TEST_STRIPE_SECRET_KEY=your test secret key"
+    * set "GOOGLE_APPLICATION_CREDENTIALS=path to your google credential json file"
 * The same folder find deactivate.bat and add the following strings before _:END_:
 	* set FLASK_APP=
 	* set env=
@@ -123,6 +126,9 @@ python -m venv venv
 	* set mail_username=
 	* set mail_password=
 	* set admin_email=
+    * set TEST_STRIPE_PUBLISHABLE_KEY="
+    * set TEST_STRIPE_SECRET_KEY=
+    * set GOOGLE_APPLICATION_CREDENTIALS=
 
 Note: if you use privateemail.com for your email you can set up the following settings:
 ```
