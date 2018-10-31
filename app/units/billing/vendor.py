@@ -139,18 +139,18 @@ class Vendor_Stripe(Vendor_base):
                     # Just reactivate
                     subscription.cancel_at_period_end = False
                     subscription.save()
-                else:
-                    # Delete an old subscription and create a new one
-                    if (subscription != None):
-                        subscription.delete()
-                    subscription = stripe.Subscription.create(
-                        customer = customer_id,
-                        items = [
-                            {
-                                'plan': plan_id,
-                            }
-                        ]
-                    )
+            else:
+                # Delete an old subscription and create a new one
+                if (subscription != None):
+                    subscription.delete()
+                subscription = stripe.Subscription.create(
+                    customer = customer_id,
+                    items = [
+                        {
+                            'plan': plan_id,
+                        }
+                    ]
+                )
         except:
             # to-do: log exception sys.exc_info()[0]
             print(exc_info()[0])

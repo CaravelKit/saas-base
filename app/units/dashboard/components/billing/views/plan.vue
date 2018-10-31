@@ -249,11 +249,11 @@ export default {
         },
         buySubscription: function(event){
             commonService.startLoader($(event.target), 'Please, wait...');
-            this.error += '';
+            this.error = '';
             if (!(this.$store.state.accountInfo.payment_method && this.$store.state.accountInfo.payment_method_info)){
                 this.error = 'To buy a subscription you have to enter you payment method information.'
             }
-            if (!this.$store.state.accountInfo.plan_id){
+            if (!(this.selectedPlan && this.selectedPlan.data.id)){
                 this.error += (this.error ? '\n' : '');
                 this.error = this.error += 'To buy a subscription you have to select a plan.'
             }
