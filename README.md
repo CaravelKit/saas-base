@@ -1,4 +1,5 @@
-# SaaS Boilerplate [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/SaaSIdea)
+# SaaS Boilerplate  [![Twitter Follow](https://img.shields.io/twitter/follow/espadrine.svg?label=Follow&style=social)](www.twitter.com/SaaSIdea)
+
 
 This free SaaS boilerplate allows you to create a working SaaS application with minimal efforts. What it already has:
 
