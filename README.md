@@ -57,25 +57,25 @@ This free SaaS boilerplate allows you to create a working SaaS application with 
 ## What does the app look like?
 Before you even clone anything it would be nice to show you what eventually you would own. There are 4 screenshots:
 * Login
-![Login page](https://www.saas-idea.com/static/images/login.png)
+![Login page](https://saasidea.io/static/images/login.png)
 * Register
-![Register page](https://www.saas-idea.com/static/images/register.png)
+![Register page](https://www.saasidea.io/static/images/register.png)
 * Confirmed
-![Confirmed page](https://www.saas-idea.com/static/images/confirmed.png)
+![Confirmed page](https://www.saasidea.io/static/images/confirmed.png)
 * Dashboard
-![Dashboard page](https://www.saas-idea.com/static/images/dashboard.png)
+![Dashboard page](https://www.saasidea.io/static/images/dashboard.png)
 
 ### Billing/payments ###
 * Billing summary
-![Billing summary](https://www.saas-idea.com/static/images/BillingSummary.png)
+![Billing summary](https://www.saasidea.io/static/images/BillingSummary.png)
 * Stripe integration
-![Stripe integration](https://www.saas-idea.com/static/images/PlansStripeIntegration.png)
+![Stripe integration](https://www.saasidea.io/static/images/PlansStripeIntegration.png)
 * Payment method selection
-![Payment method selection](https://www.saas-idea.com/static/images/PaymentMethodSelectionForm.png)
+![Payment method selection](https://www.saasidea.io/static/images/PaymentMethodSelectionForm.png)
 * After user selected plan and pai he/she can pause or cancel it
-![After user selected plan and pai he/she can pause or cancel it](https://www.saas-idea.com/static/images/UserSelectedPlanAndPaid.png)
+![After user selected plan and pai he/she can pause or cancel it](https://www.saasidea.io/static/images/UserSelectedPlanAndPaid.png)
 * Billing history
-![Billing history](https://www.saas-idea.com/static/images/BillingHistory.png)
+![Billing history](https://www.saasidea.io/static/images/BillingHistory.png)
 
 ## Getting Started
 
@@ -282,12 +282,12 @@ This version of our SaaS boilerplate is free and it will NOT have all the featur
 
 ## Authors
 
-[SaaS Idea](https://www.saas-idea.com)
+[SaaS Idea](https://www.saasidea.io)
 
 ## License
 
-Copyright (c) 2018 SaaS Idea [www.saas-idea.com](www.saas-idea.com) under the [MIT license](https://opensource.org/licenses/MIT).
-If you are interested in the full-functional version please check our website [www.saas-idea.com](https://www.saas-idea.com) for pricing and conditions.
+Copyright (c) 2018 SaaS Idea [www.saasidea.io](www.saasidea.io) under the [MIT license](https://opensource.org/licenses/MIT).
+If you are interested in the full-functional version please check our website [www.saasidea.io](https://www.saasidea.io) for pricing and conditions.
 
 ## Feedback
 
