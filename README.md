@@ -252,7 +252,7 @@ We prefer MS VS Code. It's free and have tons of plugins for any language and fr
 	"request": "launch",
 	"module": "flask",
 	"env": {
-		"FLASK_APP": "main.py"
+		"FLASK_APP": "application.py"
 	},
 	"args": [
 		"run",

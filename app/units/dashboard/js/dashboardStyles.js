@@ -9,4 +9,4 @@ import {brands} from "@fortawesome/fontawesome-free/scss/brands.scss";
 fontawesome.library.add(solid, regular, brands)
 */
 
-import './../dashboard.scss';
+import './../styles/dashboard.scss';

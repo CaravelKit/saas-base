@@ -1,25 +1,23 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-from app.constants.hosting import HostingType
-
 
 class Config(object):
     ENV = ''
     DEBUG = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    HOSTING = HostingType.local
     SQLALCHEMY_DATABASE_URI = ''
     CSRF_KEY = ''
     MAIL_SUBJECT_PREFIX = 'Your service name'
     COMPANY_NAME = 'Your company name' # Change to your company name
     TRIAL_PERIOD_IN_DAYS = 14 # Change to your trial (in days, it's 2 weeks by default). Put 0 if no trial
+    SAAS_API_KEY = os.environ['saas_api_key'] # Add after you create an account at www.saasidea.io
 
 
 class ProductionConfig(Config):
     ENV = 'prod'
     DEBUG = False
-    HOSTING = HostingType.google_app_engine
+    SAAS_API_URL = 'https://www.saasidea.io'
 
     # The values below MUST store in the hosting config variables
     #SQLALCHEMY_DATABASE_URI
@@ -43,6 +41,7 @@ class DevelopmentConfig(Config):
     MAIL_PASSWORD = os.environ['mail_password']
     ADMIN_EMAIL = os.environ['admin_email']
     TRIAL_PERIOD_IN_DAYS = 1 # Change it or remove it
+    SAAS_API_URL = 'http://127.0.0.1:5000'
 
 
 class TestingConfig(Config):
@@ -55,6 +54,7 @@ config = {
     'prod': ProductionConfig,
     'default' : DevelopmentConfig
 }
+
 
 class ConfigHelper:
 

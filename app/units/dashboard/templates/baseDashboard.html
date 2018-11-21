@@ -25,7 +25,7 @@
         <div id="dashboardApp" v-bind:class="{ 'sidebar-toggled': !sideBarOpened }">
             <nav class="navbar navbar-expand navbar-dark static-top">
 
-            <a class="navbar-brand mr-1" href="index.html">${company_name}</a>
+            <a class="navbar-brand mr-1" href="/">${company_name}</a>
 
             <button class="btn-link btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" @click="toggleMenu">
                 <i class="fas fa-bars"></i>
@@ -65,52 +65,18 @@
 
             <div id="wrapper">
 
-                <!-- Sidebar -->
-                <ul class="sidebar navbar-nav" v-bind:class="{ 'toggled': !sideBarOpened }">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index">
-                            <i class="fas fa-fw fa-tachometer-alt"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link leftmenu-toggle" href="#">
-                            <i class="fas fa-fw fa-folder"></i>
-                            <span>Pages</span>
-                        </a>
-                        <div class="left-submenu" aria-labelledby="pagesDropdown">
-                            <a href="login" class="left-submenu-item">Sub menu 1</a>
-                            <router-link v-bind:to="'/dashboard/sample'" class="left-submenu-item">Sample sub menu</router-link>
-                        </div>
-                    </li>
-                    <li class="nav-item">
-                    <a class="nav-link" href="charts">
-                        <i class="fas fa-fw fa-chart-area"></i>
-                        <span>Charts</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="tables">
-                            <i class="fas fa-fw fa-table"></i>
-                            <span>Tables</span>
-                        </a>
-                    </li>
-                    <li class="nav-item active">
-                        <router-link v-bind:to="'/dashboard/sample'" class="nav-link">
-                            <i class="fas fa-power-off"></i>
-                            <span>Sample menu</span>
-                        </router-link>
-                    </li>
-                </ul>
+                <!-- Left menu -->
+                <leftmenu></leftmenu>
 
+                <!-- Central part -->
                 <div id="content-wrapper">
                     
                     <div class="container-fluid">
                         <breadcrumbs></breadcrumbs>
                         <router-view></router-view>
                     </div>
-                    <!-- /.container-fluid -->
 
-                    <!-- Sticky Footer -->
+                    <!-- Footer -->
                     <footer class="sticky-footer">
                         <div class="status-bar-container my-auto">
                             <div class="status-bar my-auto">

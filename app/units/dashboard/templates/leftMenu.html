@@ -1,0 +1,24 @@
+<!-- No router-link used here because redirecting is done programmatically to
+    provide menu expanding (it could be used for menu without submenues but we want 
+    to keep everything the same) -->
+<ul class="list-unstyled components sidebar navbar-nav" v-bind:class="{ 'toggled': !sideBarOpened }">
+    <li class="nav-item active">
+        <a href="#li4d6c87bf" class="nav-link collapsed" data-toggle="collapse" 
+                aria-expanded="false" @click="openUrl('SamplePage')" >Complex sample page</a>
+            <!--arrow menu toggle-->
+            <a href="#li4d6c87bf" 
+                data-toggle="collapse" aria-expanded="false" class="collapsed">
+                <i class="arrow-submenu"></i>
+            </a>
+
+            <!--submenu items-->
+            <ul class="collapse list-unstyled" id="li4d6c87bf">
+                <li>
+                    <a href="#" class="left-submenu-item" @click="openUrl('SampleTable')">
+                        <i class="fab fa-apple"></i>
+                        Page with sample table
+                    </a>
+                </li>
+            </ul>           
+        </li>
+    </ul>

@@ -6,6 +6,7 @@ import 'jquery.easing';
 import 'popper.js';
 import 'bootstrap';
 var moment = require('moment');
+import LeftMenu from './leftMenu.js';
 import UserProfile from './views/userProfile.vue';
 import SamplePage from './views/samplePage.vue';
 import PageNotFound from './views/pageNotFound.vue';
@@ -16,15 +17,18 @@ import BillingHistory from '../components/billing/views/billingHistory.vue';
 import Summary from '../components/billing/views/summary.vue';
 import PaymentMethod from '../components/billing/views/paymentMethod.vue';
 
+import UserRoutes from './userRoutes.js'
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         accountInfo: {},
-        accountText: ''
+        accountText: '',
+        sideBarOpened: true
     },
     mutations: {
+        /** Account/payment information **/
         updatePaymentInfo: function(state, newPaymentInfo) {
             state.accountInfo.payment_method_info = newPaymentInfo;
         },
@@ -51,6 +55,10 @@ const store = new Vuex.Store({
         },
         updateAccountInfo: function(state, newAccountInfo) {
             state.accountInfo = newAccountInfo;
+        },
+        /** Interface **/
+        toggleSideBar: function(state){
+            state.sideBarOpened = !state.sideBarOpened;
         }
     }
 });
@@ -110,6 +118,8 @@ var routes = [
     { path: "*", component: PageNotFound }
 ];
 
+routes = routes.concat(UserRoutes);
+
 var router = new VueRouter({
     routes, 
     mode: 'history',
@@ -124,19 +134,19 @@ Vue.filter('formatDt', timeFormatter);
 new Vue({
     el: '#dashboardApp',
     components: { 
+        'leftmenu': LeftMenu,
         SamplePage, 
         UserProfile, 
         Billing,
-        'breadcrumbs': Breadcrumbs 
+        'breadcrumbs': Breadcrumbs
     },
     router,
     store,
     data: {
-        sideBarOpened: true
     },
     methods: {
         toggleMenu: function(){
-            this.sideBarOpened = !this.sideBarOpened;
+            this.$store.commit('toggleSideBar'); 
         }, 
         handleScroll: function(){
             100 < $(window.document).scrollTop() ? $(".scroll-to-top").fadeIn() : $(".scroll-to-top").fadeOut()
@@ -150,6 +160,11 @@ new Vue({
         },
         redirect: function(url){
             window.location.href = url;
+        }
+    },
+    computed: {
+        sideBarOpened() {
+            return this.$store.state.sideBarOpened;
         }
     },
     created: function(){

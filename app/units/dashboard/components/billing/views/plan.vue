@@ -12,7 +12,7 @@
                 <div role="alert" class="alert alert-success" v-show="success">{{success}}</div>
             </div>
         </div>
-        <div class="row plan-block" v-for="(plan, index) in plans" v-show="plans.length">
+        <div class="row plan-block" v-for="plan in plans" v-show="plans.length">
             <div class="col-8">
                 <h4>{{plan.data.name}}</h4>
                 <div class="price-info">
@@ -378,39 +378,6 @@ export default {
 }
 </script>
 
-<style>
-.billing-price .plan-block {
-    padding: 25px 35px;
-    margin: 20px 0px;
-    border-radius: 2px;
-    box-shadow: 0 0 14px 1px rgba(202, 198, 202, 0.69);
-}
-.billing-price .plan-block.selected {
-    border: 3px solid #a8c8e8;
-}
-.billing-price .plan-title {
-    color: #2061a2;
-    font-weight: bolder;
-}
-.billing-price ul.features {
-  list-style: none;
-  padding-left: 20px;
-}
-.billing-price .features li {
-  padding-left: 1.3em;
-}
-.billing-price .features li:before {
-    color: #598dc1;
-    content: "\F111";
-    font-size: 10px;
-    font-weight: 900;
-    font-family: 'Font Awesome 5 Free';
-    display: inline-block;
-    padding: 10px 2px;
-    margin: -5px -24px;
-    position: absolute;
-}
-.billing-price .price-info {
-    font-size: 24px;
-}
+<style lang="scss">
+    @import '@app/units/dashboard/styles/billing/billing.scss';
 </style>

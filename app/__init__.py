@@ -8,9 +8,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_alembic import Alembic
 
-
-
-
 from config import ConfigHelper
 
 db = SQLAlchemy()
@@ -54,8 +51,8 @@ def redefine_delimiters(app):
     app.jinja_options = jinja_options
 
 def init_db(option, app):
-    import app.utils.scaffold as scaffold
-    scaffold.reinit_db(option)
+    import app.utils.dbscaffold as dbscaffold
+    dbscaffold.reinit_db(option)
 
 def init_payment_vendor(app):
     global vendor, tst
@@ -64,8 +61,6 @@ def init_payment_vendor(app):
     vendor.init_keys()
 
 def initialize_libraries(app):
-    from app.utils import scaffold
-
     db.init_app(app)
     login_manager.init_app(app)
     csrf.init_app(app)
@@ -105,3 +100,4 @@ def page_not_found(e):
 def page_server_error(e):
     from app.utils import error_handler
     return error_handler.app_error(error_title='CRITICAL ERROR', error_text='Something went wrong... please try again.'), 500
+

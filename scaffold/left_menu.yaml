@@ -1,0 +1,38 @@
+# Note: all pathes are relative to root path with the project
+meta:
+    file_output: app\units\dashboard\templates\leftMenu.html
+    routes_file: app\units\dashboard\js\userRoutes.js
+    components_folder: app\units\dashboard\components
+    generate_vue_components: yes
+    breadcrumbs: yes
+    rewrite: no
+menu:
+  - name: Route with href 
+    href: '/dashboard/table' # or auto
+    icon: fas fa-battery-half
+  - name: Route with href and params
+    href: '/dashboard/table/:userId' # or auto
+    icon: fas fa-battery-half
+    params: '{ userId: 123 }'
+  - name: Menu with auto href
+    href: auto
+    component: SamplePage
+  - name: Complex menu with href
+    href: '/dashboard/sample'
+    icon: fas fa-binoculars
+    submenu:
+      - name: Subpage with href
+        icon: fab fa-apple
+        href: '/dashboard/billing'
+      - name: Brands options auto
+        href: auto
+      - name: Subpage without href
+  - name: Menu without href
+    submenu:
+      - name: aaa
+      - name: bbb
+  - name: Menu suto
+    href: auto
+    submenu:
+      - name: aaa1
+      - name: bbb1

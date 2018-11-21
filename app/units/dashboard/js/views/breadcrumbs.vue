@@ -8,10 +8,13 @@ import 'bootstrap';
             <li class="breadcrumb-item"
                 v-for="(breadcrumb, index) in breadcrumbList"
                 :key="index"
-                @click="routeTo(index)"
                 :class="{'active': breadcrumb.link}">
-                <span v-show="!breadcrumb.link">{{ breadcrumb.name }}</span>
-                <a v-bind:href="breadcrumb.link" v-show="breadcrumb.link">{{ breadcrumb.name }}</a>
+                <span v-show="!shouldBeLink(breadcrumb)">{{ breadcrumb.name }}</span>
+                <!--a v-bind:href="breadcrumb.link" v-show="breadcrumb.link">{{ breadcrumb.name }}</a -->
+                <router-link v-show="shouldBeLink(breadcrumb)" :to="{ name: breadcrumb.route, params: breadcrumb.params || {}}">
+                    {{ breadcrumb.name }}==
+                </router-link>
+                
             </li>
         </ol>
     </div>
@@ -28,10 +31,32 @@ export default {
   mounted () { this.updateList() },
   watch: { '$route' () { this.updateList() } },
   methods: {
-    routeTo (routeIndex) {
-      if (this.breadcrumbList[routeIndex].link) this.$router.push(this.breadcrumbList[routeIndex].link)
+    shouldBeLink: function(breadcrumb){
+        if (breadcrumb.route){
+            return breadcrumb.route != this.$route.name;
+        } else if (breadcrumb.link) {
+            return breadcrumb.link != this.$route.path;
+        } 
+        return false;
     },
-    updateList () { this.breadcrumbList = this.$route.meta.breadcrumb }
+    routeTo: function(index){
+        if (this.breadcrumbList[routeIndex].link) {
+            this.$router.push(this.breadcrumbList[routeIndex].link);
+            return;
+        }
+        if (this.breadcrumbList[routeIndex].route) {
+            var routeObject = {
+                name: this.breadcrumbList[routeIndex].route
+            };
+            if (this.breadcrumbList[routeIndex].params){
+                routeObject.params = this.breadcrumbList[routeIndex].params;
+            }
+            this.$router.push(routeObject);
+        }
+    },
+    updateList () { 
+        this.breadcrumbList = this.$route.meta.breadcrumb;
+    }
   }
 }
 </script>
