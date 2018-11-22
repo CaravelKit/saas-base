@@ -13,7 +13,7 @@
         <title>${company_name} - {% block title %}{% endblock %}</title>
         <script src="https://js.stripe.com/v3/"></script>
         <script src="${ url_for("static", filename="js/dashboardStyles.bundle.js")}"></script>
-        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
         {% include 'csrf_token.html'  %}
         <script>
             window.vendor_pkey = '${vendor_pkey}';
