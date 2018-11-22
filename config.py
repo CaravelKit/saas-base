@@ -10,7 +10,7 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     SQLALCHEMY_DATABASE_URI = ''
     CSRF_KEY = ''
-    MAIL_SUBJECT_PREFIX = 'Your service name'
+    MAIL_SUBJECT_PREFIX = 'SaaS Idea'
     COMPANY_NAME = 'Your company name' # Change to your company name
     TRIAL_PERIOD_IN_DAYS = 14 # Change to your trial (in days, it's 2 weeks by default). Put 0 if no trial
     SAAS_API_KEY = get_secure_variable('saas_api_key') # Add after you create an account at www.saasidea.io
