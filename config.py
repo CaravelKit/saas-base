@@ -1,4 +1,6 @@
 import os
+from app.utils.global_functions import get_secure_variable
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
 
@@ -11,7 +13,7 @@ class Config(object):
     MAIL_SUBJECT_PREFIX = 'Your service name'
     COMPANY_NAME = 'Your company name' # Change to your company name
     TRIAL_PERIOD_IN_DAYS = 14 # Change to your trial (in days, it's 2 weeks by default). Put 0 if no trial
-    SAAS_API_KEY = os.environ['saas_api_key'] # Add after you create an account at www.saasidea.io
+    SAAS_API_KEY = get_secure_variable('saas_api_key') # Add after you create an account at www.saasidea.io
 
 
 class ProductionConfig(Config):
