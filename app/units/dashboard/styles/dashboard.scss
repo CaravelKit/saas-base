@@ -8,10 +8,10 @@ $fa-font-path: '~@fortawesome/fontawesome-free/webfonts';
 html {
     position: relative;
     min-height: 100%;
-    font-family: Roboto;
 }
 
 body {
+    font-family: 'Open Sans', sans-serif;
     height: 100%;
 }
 
@@ -103,6 +103,10 @@ body.fixed-nav #content-wrapper {
 
 .navbar-nav .nav-item.active .nav-link {
     color: #fff;
+}
+
+.dropdown a {
+    font-size: 15px;
 }
 
 .dropdown-toggle::after {
@@ -512,6 +516,10 @@ footer.sticky-footer .status-bar {
 /*** Bootstrap extension ***/
 .navbar-dark .navbar-nav .nav-link {
     color: rgba(255,255,255,.8);
+}
+
+.dropdown-item {
+    font-size: 15px;
 }
 
 .btn {
