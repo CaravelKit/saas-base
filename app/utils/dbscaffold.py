@@ -11,8 +11,8 @@ from app.utils.guid_module import GUID
 # Does upgrade or create (NOT both!)
 
 def reinit_db(db_option=''):
-    if db_option == 'upgrade':
-        print('upgrading database')
+    if db_option == 'update':
+        print('updating database')
         alembic.revision('made changes')
         alembic.upgrade()
     elif db_option == 'create': 
