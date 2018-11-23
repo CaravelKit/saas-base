@@ -103,7 +103,7 @@ python -m venv venv
 3. Add necessarily environment variables:
 * Find venv/Scripts/activate.bat file, open in a text editor (__Important! Don't use Notepad++ as for some reason it spoils the file.__)
 * Add the following variables before _:END_:
-	* set FLASK_APP=main
+	* set FLASK_APP=application
 	* set env=dev
 	* set "db_url=postgres://user:password@dbhost:port/database"
 	* set "secret_key=your_local_secret_key"

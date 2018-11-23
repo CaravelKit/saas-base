@@ -18,7 +18,7 @@ from app import get_vendor
 
 
 class Account(db.Model):
-    __tablename__ = 'Account'
+    __tablename__ = 'account'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=lambda: uuid.uuid4().hex)
     user = db.relationship('User', back_populates='account')
     account_history = db.relationship("AccountHistory", backref='account', lazy='dynamic')

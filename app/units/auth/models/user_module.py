@@ -21,16 +21,16 @@ from app.units.billing.models.account_module import Account
 
 
 class User(UserMixin, db.Model):
-    __tablename__ = 'User'
+    __tablename__ = 'user'
     id = db.Column(UUID(as_uuid=True),
         primary_key=True, default=lambda: uuid.uuid4().hex)
     email = db.Column(db.String(64), unique=True)
     username = db.Column(db.String(64))
     password_hash = db.Column(db.String(128))
-    role_id = db.Column(UUID(as_uuid=True), db.ForeignKey('Role.id'))
+    role_id = db.Column(UUID(as_uuid=True), db.ForeignKey('role.id'))
     confirmed = db.Column(db.Boolean, default=False)
     subscribed = db.Column(db.Boolean, default=False)
-    account_id = db.Column(UUID(as_uuid=True), db.ForeignKey('Account.id'))
+    account_id = db.Column(UUID(as_uuid=True), db.ForeignKey('account.id'))
     account = db.relationship('Account', back_populates='user')
 
     def __init__(self, **kwargs):

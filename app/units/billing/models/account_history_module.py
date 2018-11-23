@@ -16,9 +16,9 @@ from app.constants.events import EventType, get_text_event
 
 
 class AccountHistory(db.Model):
-    __tablename__ = 'AccountHistory'
+    __tablename__ = 'account_history'
     id = db.Column(UUID(as_uuid=True), primary_key=True, default=lambda: uuid.uuid4().hex)
-    account_id = db.Column(UUID(as_uuid=True), db.ForeignKey('Account.id'))
+    account_id = db.Column(UUID(as_uuid=True), db.ForeignKey('account.id'))
     date = db.Column(db.DateTime(), nullable=True)
     event = db.Column(db.String(32), nullable=True) # Some text representation of event
     comment = db.Column(db.String(128)) # Text comment
