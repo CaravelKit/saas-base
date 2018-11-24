@@ -1,11 +1,14 @@
 from sys import exc_info
 from abc import ABCMeta, abstractmethod
-from app.utils.global_functions import get_secure_variable
+from app.utils.global_functions import get_config_var
 import stripe
 
 class Vendor_base:
 
     keys = None
+
+    def init_app(self, app):
+        self.application = app
 
     @abstractmethod
     def get_vendor_name(self):
@@ -54,14 +57,16 @@ class Vendor_base:
 
 class Vendor_Stripe(Vendor_base):
 
+    def __init__(self, app):
+        self.init_app(app)
+
     def get_vendor_name(self):
         return 'stripe'
     
     def init_keys(self):
-        env = get_secure_variable('env')
         self.keys = {
-            'publishable_key': get_secure_variable('STRIPE_PUBLISHABLE_KEY') if env == 'prod' else get_secure_variable('TEST_STRIPE_PUBLISHABLE_KEY'),
-            'secret_key': get_secure_variable('STRIPE_SECRET_KEY') if env == 'prod' else get_secure_variable('TEST_STRIPE_SECRET_KEY'), 
+            'publishable_key': get_config_var('STRIPE_PUBLISHABLE_KEY', self.application),
+            'secret_key': get_config_var('STRIPE_SECRET_KEY', self.application), 
         }
         stripe.api_key = self.keys['secret_key']
 

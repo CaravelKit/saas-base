@@ -1,7 +1,7 @@
 Dear ${ user.username },
-Welcome to YOUR SERVICE NAME!
+Welcome to ${get_config_var('COMPANY_NAME')}!
 To confirm your account please click the following link: ${ url_for('auth.confirm', token=token, userid=user.id, _external=True) }.
 Alternatively, you can paste the following link in your browser's address bar:
 ${ url_for('auth.confirm', token=token, userid=user.id, _external=True) }
 Sincerely,
-YOUR SERVICE NAME Team
+${get_config_var('COMPANY_NAME')} Team

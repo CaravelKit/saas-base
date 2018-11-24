@@ -1,7 +1,7 @@
 <p>Dear ${ user.username },</p>
-<p>Welcome to <b>YOUR SERVICE NAME</b>!</p>
+<p>Welcome to <b>${get_config_var('COMPANY_NAME')}</b>!</p>
 <p>To confirm your account please <a href="${ url_for('auth.confirm', token=token, userid=user.id, _external=True) }">click here</a>.</p>
 <p>Alternatively, you can paste the following link in your browser's address bar:</p>
 <p>${ url_for('auth.confirm', token=token, userid=user.id, _external=True) }</p>
 <p>Sincerely,</p>
-<p>YOUR SERVICE NAME Team</p>
+<p>${get_config_var('COMPANY_NAME')} Team</p>

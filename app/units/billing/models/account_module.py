@@ -32,7 +32,6 @@ class Account(db.Model):
     subscription_id = db.Column(db.String(128))
     plan_id = db.Column(db.String(64))
     plan_name = db.Column(db.String(128))
-    api_key = db.Column(db.String(128)) # API key generated automatically by API
 
     # Below is current actual information
     # If account is valid that is has access to some plan

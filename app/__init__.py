@@ -56,8 +56,8 @@ def init_db(option, app):
 
 def init_payment_vendor(app):
     global vendor, tst
-    from .units.billing.vendor import Vendor_Stripe # to-do it dynamically
-    vendor = Vendor_Stripe() # to-do: vendor is selected based on config
+    from .units.billing.vendor import Vendor_Stripe, Vendor_base # to-do it dynamically
+    vendor = Vendor_Stripe(app) # to-do: vendor is selected based on config
     vendor.init_keys()
 
 def initialize_libraries(app):
