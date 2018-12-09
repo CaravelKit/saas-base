@@ -1,4 +1,4 @@
-# SaaS Boilerplate  [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=SaaS%20Python%20boilerplate%20with%20Vuejs%20and%20Webpack&url=https://www.saasidea.io&hashtags=SaaS,Python,developers)
+# SaaS Boilerplate
 
 
 This free SaaS boilerplate allows you to create a working SaaS application with minimal efforts. What it already has:
