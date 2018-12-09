@@ -30,6 +30,15 @@ var commonService = {
         delete buttonObject[0].oldIcon;
         buttonObject.find('.icon-span').remove();
         buttonObject.prop('disabled', false);
+    },
+    redirectToRoute: function(caller, routeName, params){
+        var routeObject = {
+            name: routeName
+        };
+        if (params){
+            routeObject.params = params;
+        }
+        caller.$router.push(routeObject);
     }
 };
 export { commonService };

@@ -26,7 +26,7 @@ def generate_code(yaml_name):
     # 2. If no exception, send to the server
     print('Requesting the server to generate...')
     api_key = current_app.config['SAAS_API_KEY']
-    api_url = '{0}/api/{1}/generate/{2}'.format(current_app.config['SAAS_API_URL'], api_key, yaml_name)
+    api_url = '{0}/scaffold/{1}/element/{2}'.format(current_app.config['SAAS_API_URL'], api_key, yaml_name)
     headers = {
         'Content-Type': 'application/json'
     }

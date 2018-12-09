@@ -1,3 +1,4 @@
+import { commonService } from '@app/units/common/commonService.js'; 
 export default {
     name: 'LeftMenu',
     template: require('./../templates/leftMenu.html'),
@@ -7,13 +8,8 @@ export default {
     },
     methods: {
         openUrl: function(routeName, params){
-            var routeObject = {
-                name: routeName
-            };
-            if (params){
-                routeObject.params = params;
-            }
-            this.$router.push(routeObject);
+            console.log(routeName);
+            commonService.redirectToRoute(this, routeName, params);
         }
     },
     computed: {
