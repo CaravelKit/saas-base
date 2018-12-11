@@ -1,0 +1,16 @@
+{% extends "auth/baseAuth.html" %}
+{% block title %} Login {% endblock %}
+{%block page_title%} Please sign in {%endblock%}
+{% block page_content %}
+    <label for="inputEmail">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" v-model="data.email" autofocus>
+    <label for="inputPassword">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required v-model="data.password">
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" v-model="data.remember_me"> Remember me
+        </label>
+    </div>
+    <p>Don't have an account? Register <a href="/register">here</a>.</p>
+    <button class="btn btn-lg btn-primary btn-block" @click="checkLoginForm">Sign in</button>
+{% endblock %}

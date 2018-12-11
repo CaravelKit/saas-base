@@ -56,7 +56,7 @@ def init_db(option, app):
 
 def init_payment_vendor(app):
     global vendor, tst
-    from .units.billing.vendor import Vendor_Stripe, Vendor_base # to-do it dynamically
+    from app.DAL.services.vendor import Vendor_Stripe, Vendor_base # to-do it dynamically
     vendor = Vendor_Stripe(app) # to-do: vendor is selected based on config
     vendor.init_keys()
 
@@ -68,12 +68,11 @@ def initialize_libraries(app):
     alembic.init_app(app)
 
 def register_blueprints(app):
-    from app.units.main import main_component # to-do: rename to units
-    from app.units.auth import auth_component
-    from app.units.dashboard import dashboard_component
-    from app.units.dashboard.components.billing import billing_component
+    from app.blueprints.auth_blueprint import auth_blueprint
+    from app.blueprints.dashboard_blueprint import dashboard_blueprint
+    from app.blueprints.billing_blueprint import billing_blueprint
 
-    blueprints = [main_component, auth_component, dashboard_component, billing_component] # Add a new blueprint here # to-do: automate it
+    blueprints = [auth_blueprint, dashboard_blueprint, billing_blueprint] # Add a new blueprint here # to-do: automate it
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
     

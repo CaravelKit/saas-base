@@ -1,7 +1,6 @@
 import os, sys
 from flask import current_app
 
-
 def init(app):
     app.jinja_env.globals.update(get_abs_path = get_abs_path) 
     app.jinja_env.globals.update(get_config_var = get_config_var) 
