@@ -1,7 +1,7 @@
 import click
-from flask import send_from_directory
+from flask import send_from_directory, current_app
 from flask.cli import with_appcontext
-from app import create_app, init_db
+from app import create_app, init_db, init_app_path
 
 application = create_app()
 
@@ -17,6 +17,7 @@ def dbcreate():
     print('create db')
     init_db('create', application)
 
+
 @application.cli.command()
 @with_appcontext
 @click.argument('interface_element')
@@ -24,6 +25,7 @@ def dbcreate():
               default='')
 def scaffold(interface_element, option):
     from scaffold.generators.interface import generate
+    init_app_path(current_app.root_path)
     generate(interface_element, option)
 
 

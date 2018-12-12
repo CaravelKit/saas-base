@@ -28,6 +28,7 @@ def create_app():
     dist_folder = os.path.abspath(os.path.join(app.root_path,"../static"))
     app.static_folder = dist_folder
     app.static_url_path='/static'
+    app_path = app.root_path
     app.url_map.strict_slashes = False
     app.config.from_object(ConfigHelper.set_config(sys.argv))
     initialize_libraries(app)
@@ -50,12 +51,16 @@ def redefine_delimiters(app):
     ))
     app.jinja_options = jinja_options
 
+def init_app_path(path):
+    global app_path
+    app_path = path
+
 def init_db(option, app):
     import app.utils.dbscaffold as dbscaffold
     dbscaffold.reinit_db(option)
 
 def init_payment_vendor(app):
-    global vendor, tst
+    global vendor
     from app.DAL.services.vendor import Vendor_Stripe, Vendor_base # to-do it dynamically
     vendor = Vendor_Stripe(app) # to-do: vendor is selected based on config
     vendor.init_keys()

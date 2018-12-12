@@ -1,13 +1,13 @@
 # Note: all pathes are relative to root path with the project
 meta:
-    file_output: app\units\dashboard\templates\leftMenu.html
-    routes_file: app\units\dashboard\js\userRoutes.js
-    components_folder: app\units\dashboard\components
+    file_output: app\templates\leftMenu.html
+    routes_file: app\js\userRoutes.js
+    components_folder:  # Folder located in app\js\views folder, leave empty if you want all components in views folder
     generate_vue_components: yes
     breadcrumbs: yes
-    rewrite: no
+    rewrite: yes
 menu:
-  - name: Route with href 
+  - name: Route with href11 
     href: '/dashboard/table' # or auto
     icon: fas fa-battery-half
   - name: Route with href and params

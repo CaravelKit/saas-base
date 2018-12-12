@@ -11,7 +11,9 @@ def generate_code(yaml_name):
     # 1. Read the Yaml file to verify its existence and validity
     print('Reading Yaml configuration...')
     file_yaml_name = yaml_name + '.yaml'
-    file_yaml_name = get_path_to_include(r'scaffold\\' + file_yaml_name)
+    #file_yaml_name = get_path_to_include(r'..\\scaffold\\' + file_yaml_name)
+    file_yaml_name = os.path.abspath(r'scaffold\\' + file_yaml_name)
+
     if not os.path.exists(file_yaml_name):
         raise Exception(file_yaml_name + ' file not found! Please create in the /scaffold folder')
     stream = open(file_yaml_name, 'rt')
@@ -38,7 +40,8 @@ def generate_code(yaml_name):
             'generate_vue_components' : (yaml_object['meta']['generate_vue_components'] 
                 if yaml_object['meta']['generate_vue_components'] != None 
                 else False),
-            'breadcrumbs': yaml_object['meta']['breadcrumbs']
+            'breadcrumbs': yaml_object['meta']['breadcrumbs'],
+            'components_folder': yaml_object['meta']['components_folder']
         }
     }
     response = requests.post(api_url, headers=headers, data=json.dumps(yaml_full))
@@ -54,7 +57,7 @@ def generate_code(yaml_name):
     # 3. Update the output file - left menu itself
     print('Updating the output file...')
     output_file_path = yaml_object['meta']['file_output']
-    output_file_name = get_path_to_include(output_file_path)
+    output_file_name = os.path.abspath(output_file_path)
 
     rewrite = yaml_object['meta']['rewrite'] != None and yaml_object['meta']['rewrite'] == True
     common.create_write_file(output_file_name, result['left_menu'], rewrite)
@@ -62,13 +65,26 @@ def generate_code(yaml_name):
     
     # 4. If other Vue files should be created also, routes first
     output_routes_path = yaml_object['meta']['routes_file']
-    routes_file_name = get_path_to_include(output_routes_path)
+    routes_file_name = os.path.abspath(output_routes_path)
     common.create_write_file(routes_file_name, result['interface_components_render']['routes'], rewrite, 
         comment_start = r'/*', comment_end = r'*/')
 
     print('Scaffolding done.')
     # 5. Components folders/files
     for component in result['interface_components_render']['components']:
+        file_component_name = (component['name'] if component['parent'] is None else (component['parent'] + 
+            '_' + component['name'])) + '.vue'
+        components_folder = (yaml_object['meta']['components_folder'] if ('components_folder' in yaml_object['meta'] 
+            and yaml_object['meta']['components_folder'] is not None)
+            else '')
+        full_file_name = get_path_to_include(os.path.join(r'js\\views', components_folder, 
+            file_component_name))
+        print(full_file_name)
+        common.create_write_file(full_file_name, 
+            component['content'], 
+            rewrite)
+
+        '''
         folder_name = component['name'] if component['parent'] is None else component['parent']
         component_file_path = os.path.join(yaml_object['meta']['components_folder'], 
             folder_name,
@@ -78,6 +94,7 @@ def generate_code(yaml_name):
         common.create_write_file(component_file_name, 
             component['content'], 
             rewrite)
+        '''
     
     
 

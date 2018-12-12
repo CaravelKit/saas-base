@@ -19,6 +19,7 @@ def create_write_file(file_path, new_content, rewrite = False, comment_start = '
         if not rewrite:
             output_file.seek(0)
             content = output_file.read()
+            content = content.replace(comment_start, '').replace(comment_end, '')
             content = comment_start + content
             content += comment_end
             content = new_content + content
