@@ -12,6 +12,7 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
+    font-size: 15px;
     height: 100%;
 }
 
@@ -523,20 +524,28 @@ footer.sticky-footer .status-bar {
 }
 
 .btn {
-    height: 38px;
+    height: 35px;
     color: #5b5c5d;
     cursor: pointer;
     border: none;
     padding: 0 20px;
     box-shadow: 0 -1px 0 1px rgba(0,0,0,.2) inset;
     outline: 0;
-    margin: 10px 0;
+    font-weight: normal;
+    font-size: 15px;
+    min-width: 80px;
+    color: #efefef;
 }
 .btn-secondary {
     color: #ffffff;
 }
-.btn:active, .btn:hover, .btn:focus {
+.btn:active, .btn:hover, .btn:focus, .btn-primary:active, .btn-primary:focus {
     outline: none;
+    box-shadow: none;
+}
+.btn:not(:disabled):not(.disabled):active:focus, .btn:not(:disabled):not(.disabled).active:focus, 
+    .show > .btn.dropdown-toggle:focus {
+    box-shadow: none;
 }
 .btn-primary {
     color: #f6f8fa !important;
@@ -558,6 +567,7 @@ footer.sticky-footer .status-bar {
     color: #f6f8fa !important;
     background-color: #3b943a !important;
 }
+
 .btn-cancel:hover, .btn-pause:hover, .btn-resume {
     color: #ffffff;
 }
@@ -568,6 +578,11 @@ footer.sticky-footer .status-bar {
 }
 .btn-link:focus {
     outline: none;
+}
+
+/* When several buttons in a row, we need to put some space between them */
+td .btn {
+    margin-right: 20px;
 }
 
 .form-control {
