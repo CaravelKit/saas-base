@@ -510,9 +510,17 @@ footer.sticky-footer .status-bar {
     vertical-align: bottom;
     border-bottom: 1px solid #dee2e6;
 }
-/*** Forms ***/
 
-
+.top-buffer {
+    margin-top: 10px;
+}
+.simple-link {
+    color: #1072d4;
+}
+.simple-link:hover {
+    color: #e89224;;
+    text-decoration: none;
+}
 
 /*** Bootstrap extension ***/
 .navbar-dark .navbar-nav .nav-link {
@@ -610,4 +618,9 @@ td .btn {
 }
 .alert {
     border-radius: 2px;
+}
+.table {
+    border-right: 1px solid #dee2e6;
+    border-left: 1px solid #dee2e6;
+    border-bottom: 1px solid #dee2e6;
 }

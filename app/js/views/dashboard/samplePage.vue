@@ -12,6 +12,7 @@
                                     <th scope="col">First name</th>
                                     <th scope="col">Last name</th>
                                     <th scope="col">Position</th>
+                                    <th scope="col">Edit data</th>
                                     <th scope="col">What to do with him/her</th>
                                 </tr>
                             </thead>
@@ -20,6 +21,7 @@
                                     <td>Michael</td>
                                     <td>Bolton</td>
                                     <td>Programmer</td>
+                                    <td><a href="#" class="simple-link">Edit</a></td>
                                     <td>
                                         <button class="btn btn-danger">Fire</button>
                                         <button class="btn btn-success">Promote</button>
@@ -29,6 +31,7 @@
                                     <td>Samir</td>
                                     <td>Nagheenanajar</td>
                                     <td>Programmer</td>
+                                    <td><a href="#" class="simple-link">Edit</a></td>
                                     <td>
                                         <button class="btn btn-danger">Fire</button>
                                         <button class="btn btn-success">Promote</button>
@@ -38,6 +41,7 @@
                                     <td>Bill</td>
                                     <td>Lumbergh</td>
                                     <td>Vice president</td>
+                                    <td><a href="#" class="simple-link">Edit</a></td>
                                     <td>
                                         <button class="btn btn-danger">Fire</button>
                                         <button class="btn btn-success">Promote</button>
