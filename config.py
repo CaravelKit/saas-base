@@ -21,6 +21,16 @@ class Config(object):
     TRIAL_PERIOD_IN_DAYS = 14 # Change to your trial (in days, it's 2 weeks by default). Put 0 if no trial
     SAAS_API_KEY = get_secure_variable.__func__('saas_api_key') # Your api key for project-member
     SAAS_API_EMAIL = 'your_email_registered_in_project' # Your email as project-member
+    # Mail sending settings (For privateemail by default)
+    MAIL_SERVER = Config.get_secure_variable('mail_server')
+    MAIL_PORT = Config.get_secure_variable('mail_port')
+    MAIL_USE_SSL = True
+    MAIL_USE_TLS = False
+    MAIL_USERNAME = Config.get_secure_variable('mail_username')
+    SECURITY_EMAIL_SENDER = Config.get_secure_variable('mail_username')
+    MAIL_DEFAULT_SENDER = Config.get_secure_variable('mail_username')
+    MAIL_PASSWORD = Config.get_secure_variable('mail_password')
+    ADMIN_EMAIL = Config.get_secure_variable('admin_email')
 
 
 class ProductionConfig(Config):
@@ -42,15 +52,6 @@ class DevelopmentConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ['db_url'] # Store it in the hosting config
     SECRET_KEY = Config.get_secure_variable('secret_key') # Store it in the hosting config
     SECRET_SALT = Config.get_secure_variable('secret_salt') # Store it in the hosting config
-    MAIL_SERVER = Config.get_secure_variable('mail_server')
-    MAIL_PORT = Config.get_secure_variable('mail_port')
-    MAIL_USE_SSL = True
-    MAIL_USE_TLS = False
-    MAIL_USERNAME = Config.get_secure_variable('mail_username')
-    SECURITY_EMAIL_SENDER = Config.get_secure_variable('mail_username')
-    MAIL_DEFAULT_SENDER = Config.get_secure_variable('mail_username')
-    MAIL_PASSWORD = Config.get_secure_variable('mail_password')
-    ADMIN_EMAIL = Config.get_secure_variable('admin_email')
     TRIAL_PERIOD_IN_DAYS = 1 # Change it or remove it
     SAAS_API_URL = 'http://127.0.0.1:5000'
     STRIPE_PUBLISHABLE_KEY = Config.get_secure_variable('TEST_STRIPE_PUBLISHABLE_KEY')
