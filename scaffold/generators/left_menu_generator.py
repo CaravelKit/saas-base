@@ -28,13 +28,18 @@ def generate_code(yaml_name):
     # 2. If no exception, send to the server
     print('Requesting the server to generate...')
     api_key = current_app.config['SAAS_API_KEY']
-    api_url = '{0}/scaffold/{1}/element/{2}'.format(current_app.config['SAAS_API_URL'], api_key, yaml_name)
+    api_email = current_app.config['SAAS_API_EMAIL']
+    api_url = '{0}/scaffold/element/{1}'.format(current_app.config['SAAS_API_URL'], yaml_name)
     headers = {
         'Content-Type': 'application/json'
     }
     #request = requests.post(api_url, files = {'yaml_config': stream})
 
     yaml_full = {
+        'cred': {
+            'key': api_key,
+            'email': api_email
+        },
         'menu': yaml_object['menu'],
         'meta': {
             'generate_vue_components' : (yaml_object['meta']['generate_vue_components'] 
@@ -48,8 +53,11 @@ def generate_code(yaml_name):
     stream.close()
     result_json = json.loads(response.text)
     if not result_json['result']:
-        raise Exception('''Some error occured on the server. Please retry you request. If this message 
+        err_text = (', '.join(result_json.get('errors')) 
+            if result_json.get('errors') is not None else '''Some error occured on the server. 
+            Please retry you request. If this message 
             persists please ask for the assistance at support''')
+        raise Exception(err_text)
     
     result = result_json['render']
     #print(result['interface_components_render']['components'][0]['content'])

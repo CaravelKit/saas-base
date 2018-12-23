@@ -19,7 +19,8 @@ class Config(object):
     MAIL_SUBJECT_PREFIX = 'Your company name'
     COMPANY_NAME = 'Your company name' # Change to your company name
     TRIAL_PERIOD_IN_DAYS = 14 # Change to your trial (in days, it's 2 weeks by default). Put 0 if no trial
-    SAAS_API_KEY = get_secure_variable.__func__('saas_api_key') # Add after you create an account at www.saasidea.io
+    SAAS_API_KEY = get_secure_variable.__func__('saas_api_key') # Your api key for project-member
+    SAAS_API_EMAIL = 'your_email_registered_in_project' # Your email as project-member
 
 
 class ProductionConfig(Config):
