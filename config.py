@@ -19,18 +19,18 @@ class Config(object):
     MAIL_SUBJECT_PREFIX = 'Your company name'
     COMPANY_NAME = 'Your company name' # Change to your company name
     TRIAL_PERIOD_IN_DAYS = 14 # Change to your trial (in days, it's 2 weeks by default). Put 0 if no trial
-    SAAS_API_KEY = get_secure_variable.__func__('saas_api_key') # Your api key for project-member
+    SAAS_API_KEY = os.environ.get('saas_api_key1') # Your api key for project-member
     SAAS_API_EMAIL = 'your_email_registered_in_project' # Your email as project-member
     # Mail sending settings (For privateemail by default)
-    MAIL_SERVER = Config.get_secure_variable('mail_server')
-    MAIL_PORT = Config.get_secure_variable('mail_port')
+    MAIL_SERVER = os.environ.get('mail_server')
+    MAIL_PORT = os.environ.get('mail_port')
     MAIL_USE_SSL = True
     MAIL_USE_TLS = False
-    MAIL_USERNAME = Config.get_secure_variable('mail_username')
-    SECURITY_EMAIL_SENDER = Config.get_secure_variable('mail_username')
-    MAIL_DEFAULT_SENDER = Config.get_secure_variable('mail_username')
-    MAIL_PASSWORD = Config.get_secure_variable('mail_password')
-    ADMIN_EMAIL = Config.get_secure_variable('admin_email')
+    MAIL_USERNAME = os.environ.get('mail_username')
+    SECURITY_EMAIL_SENDER = os.environ.get('mail_username')
+    MAIL_DEFAULT_SENDER = os.environ.get('mail_username')
+    MAIL_PASSWORD = os.environ.get('mail_password')
+    ADMIN_EMAIL = os.environ.get('admin_email')
 
 
 class ProductionConfig(Config):
