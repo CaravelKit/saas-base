@@ -19,7 +19,7 @@
         <div class="row" v-show="accountInfo.account_status=='trial' || !accountInfo.account_status || accountInfo.account_status=='cancelled'">
             <div class="col-12">
                 <h6>Buy subscription</h6>
-                To buy a subscription select a plan on <a href="/dashboard/billing/plan" class="inner-link">plans tab</a>.
+                To buy a subscription select a plan on <a href="/billing/plan" class="inner-link">plans tab</a>.
             </div>
         </div>
         <div class="row" v-show="accountInfo.account_status=='paid'">
@@ -28,7 +28,7 @@
             </div>
             <div class="col-12">
                 <ul>
-                    <li><a href="/dashboard/billing/plan" class="inner-link">Pause</a></li>
+                    <li><a href="/billing/plan" class="inner-link">Pause</a></li>
                 </ul>
             </div>
         </div>
@@ -38,7 +38,7 @@
             </div>
             <div class="col-12">
                 <ul>
-                    <li><a href="/dashboard/billing/plan" class="inner-link">Cancel</a></li>
+                    <li><a href="/billing/plan" class="inner-link">Cancel</a></li>
                 </ul>
             </div>
         </div>
@@ -48,7 +48,7 @@
             </div>
             <div class="col-12">
                 <ul>
-                    <li><a href="/dashboard/billing/plan" class="inner-link">Resume</a></li>
+                    <li><a href="/billing/plan" class="inner-link">Resume</a></li>
                 </ul>
             </div>
         </div>

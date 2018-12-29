@@ -37,7 +37,7 @@ def login_api():
                 prev_query = parse.urlparse(request.referrer).query
                 if prev_query and parse.parse_qs(prev_query).get('next'):
                     prev_url = parse.parse_qs(prev_query).get('next')[0]
-            redirect_url = prev_url or url_for('dashboard.index_page')
+            redirect_url = prev_url or url_for('dashboard.index_page_without_params')
             return jsonify({'result': True, 'redirect': redirect_url})
         return jsonify({'result': False, 'errors': ['Invalid username or password.']})
     else:

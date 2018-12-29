@@ -2,10 +2,10 @@
     <div class="billing-options-block">
         <h3 class="title">Billing</h3>
         <div class="navigate-links">
-            <router-link v-bind:to="'/dashboard/billing'" class="tab-link">Summary</router-link>
-            <router-link v-bind:to="'/dashboard/billing/plan'" class="tab-link">Plan</router-link>
-            <router-link v-bind:to="'/dashboard/billing/paymentMethod'" class="tab-link">Payment method</router-link>
-            <router-link v-bind:to="'/dashboard/billing/billingHistory'" class="tab-link">Billing history</router-link>
+            <router-link v-bind:to="'/billing'" class="tab-link">Summary</router-link>
+            <router-link v-bind:to="'/billing/plan'" class="tab-link">Plan</router-link>
+            <router-link v-bind:to="'/billing/paymentMethod'" class="tab-link">Payment method</router-link>
+            <router-link v-bind:to="'/billing/billingHistory'" class="tab-link">Billing history</router-link>
         </div>
         <br>&nbsp;</br>
         <router-view></router-view>

@@ -4,7 +4,7 @@ import SampleTable from './views/table.vue';
 
 var userRoutes = [
     { 
-        path: '/dashboard/samplePage', 
+        path: '/samplePage', 
         name: 'SamplePage',
         component: SamplePage,
         meta: {
@@ -13,7 +13,7 @@ var userRoutes = [
         
     },
     { 
-        path: '/dashboard/sampleTable', 
+        path: '/sampleTable', 
         name: 'SampleTable',
         component: SampleTable,
         meta: {

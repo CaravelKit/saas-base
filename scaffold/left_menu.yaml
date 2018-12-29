@@ -8,22 +8,22 @@ meta:
     rewrite: yes
 menu:
   - name: Route with href11 
-    href: '/dashboard/table' # or auto
+    href: '/table' # or auto
     icon: fas fa-battery-half
   - name: Route with href and params
-    href: '/dashboard/table/:userId' # or auto
+    href: '/table/:userId' # or auto
     icon: fas fa-battery-half
     params: '{ userId: 123 }'
   - name: Menu with auto href
     href: auto
     component: SamplePage
   - name: Complex menu with href
-    href: '/dashboard/sample'
+    href: '/sample'
     icon: fas fa-binoculars
     submenu:
       - name: Subpage with href
         icon: fab fa-apple
-        href: '/dashboard/billing'
+        href: '/billing'
       - name: Brands options auto
         href: auto
       - name: Subpage without href

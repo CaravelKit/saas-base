@@ -211,7 +211,7 @@ change/add the following code:
 var routes = [
     ...
     { 
-        path: '/dashboard/user/profile', 
+        path: '/user/profile', 
         component: UserProfile,
         name: 'userProfile',
         meta: {

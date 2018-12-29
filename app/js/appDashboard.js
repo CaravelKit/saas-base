@@ -65,11 +65,7 @@ const store = new Vuex.Store({
 
 var routes = [
     { 
-        path: '/dashboard', 
-        component: SamplePage
-    },
-    { 
-        path: '/dashboard/user/profile', 
+        path: '/user/profile', 
         component: UserProfile,
         name: 'userProfile',
         meta: {
@@ -80,7 +76,7 @@ var routes = [
         } 
     },
     { 
-        path: '/dashboard/sample', component: SamplePage,
+        path: '/sample', component: SamplePage,
         meta: {
             breadcrumb: [
                 {   name: 'Pages'    },
@@ -89,7 +85,7 @@ var routes = [
         }  
     },
     {
-        path: '/dashboard/billing',
+        path: '/billing',
         component: Billing,
         name: 'billing',
         meta: {
@@ -104,14 +100,14 @@ var routes = [
             {   path: 'plan', 
                 component: Plan, 
                 meta: {
-                    breadcrumb: [{name: 'Billing', link: '/dashboard/billing'}, {name: 'Plan'}]
+                    breadcrumb: [{name: 'Billing', link: '/billing'}, {name: 'Plan'}]
                 }
             },
             {path: 'paymentMethod', component: PaymentMethod, meta: {
-                breadcrumb: [{name: 'Billing', link: '/dashboard/billing'}, {name: 'Payment methods'}]
+                breadcrumb: [{name: 'Billing', link: '/billing'}, {name: 'Payment methods'}]
             }},
             {path: 'billingHistory', component: BillingHistory, meta: {
-                breadcrumb: [{name: 'Billing', link: '/dashboard/billing'}, {name: 'Billing history'}]
+                breadcrumb: [{name: 'Billing', link: '/billing'}, {name: 'Billing history'}]
             }}
         ]
     },
