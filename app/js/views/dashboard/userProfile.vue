@@ -1,7 +1,6 @@
 <template>
-    <div id="userProfile" class="container-fluid">
+    <div id="userProfile">
         <div class="col-lg-6">
-            <h3>User profile</h3>
             <div class="form-group">
                 <label>User name</label>
                 <input type="text" class="form-control" v-model="userdata.username"/>
@@ -45,15 +44,11 @@
                 if (response && response.data.result && response.data.userdata){
                     self.userdata = response.data.userdata;
                 } else {
-                    self.errorMessage = 'Something went wrong. Please try again.';
+                    self.errorMessage = (response.data.errors && response.data.errors.length ? 
+                            response.data.errors[0] : 'Something went wrong. Please try again.');
                 }
             }).catch(function(err){
-                if (err){
-                    if (err.request.status == 500){
-                        // Show error message // to-do: the error message should be got from the server, not generated here.
-                        self.errorMessage = 'Some error occured. Please try again.';
-                    }
-                }
+                self.errorMessage = 'Some error occured. Please try again.';
             });
         },
         methods: {
@@ -63,14 +58,11 @@
                     if (response && response.data.result){
                         self.successMessage = 'Your profile information has been updated! You now can reload this page to see a result.';
                     } else {
-                        self.errorMessage = 'Something went wrong. Please try again.';
+                        self.errorMessage = (response.data.errors && response.data.errors.length ? 
+                            response.data.errors[0] : 'Something went wrong. Please try again.');
                     }
                 }).catch(function(err){
-                    if (err){
-                        if (err.request.status == 500){
-                            self.errorMessage = 'Some error occured. Please try again.';
-                        }
-                    }
+                    self.errorMessage = 'Some error occured. Please try again.';
                 });
             }
         }

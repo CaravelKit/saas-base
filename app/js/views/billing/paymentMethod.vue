@@ -119,12 +119,11 @@ export default {
                     // Updated user account info
                     self.$store.commit('updatePaymentInfo', response.data.info);
                 } else {
-                    method.error = 'Something went wrong. Please try again.';
+                    method.error = (response.data.errors && response.data.errors.length ? 
+                        response.data.errors[0] : 'Something went wrong. Please try again.');
                 }
             }).catch(function(err){
-                if (err){
-                    method.error = 'Some error occured. Please try again.';
-                }
+                method.error = 'Some error occured. Please try again.';
             });
         },
         selectMethodAndSave: function(methodIndex){

@@ -1,4 +1,5 @@
 import uuid
+from urllib import parse
 from flask import render_template, redirect, request, url_for, flash, jsonify, current_app
 from flask_login import login_user, logout_user, login_required, current_user
 from app import db
@@ -12,20 +13,6 @@ import app.utils.error_handler as error_handler
 from app.blueprints.auth_blueprint import auth_blueprint
 
 
-@auth_blueprint.before_app_request
-def before_request():
-    # Add here a main page (landing) if you have it.
-    if request.endpoint \
-        and request.blueprint != 'auth' \
-        and request.endpoint != 'static':
-            if current_user.is_authenticated:
-                if not current_user.confirmed:
-                    return redirect(url_for('auth.confirm_email', userid = str(current_user.id)))
-            else:
-                return redirect(url_for('auth.login_page'))
-
-
-
 # This code is to show you how to redirect to error page - if it's not 404 or 500, but just something went wrong.
 @auth_blueprint.route('/testerror', methods=['GET'])
 def testerror():
@@ -33,6 +20,9 @@ def testerror():
 
 @auth_blueprint.route('/login', methods=['GET'])
 def login_page():
+    if current_user.is_authenticated:
+        if not current_user.confirmed:
+            return redirect(url_for('auth.confirm_email', userid = str(current_user.id)))
     return render_template('/auth/login.html', company_name=current_app.config['COMPANY_NAME'])
 
 @auth_blueprint.route('/login', methods=['POST'])
@@ -42,8 +32,13 @@ def login_api():
         user = user_module.User.query.filter_by(email=form.email.data).first()
         if user and user.verify_password(form.password.data):
             login_user(user, form.remember_me.data)
-            dashboard_url = url_for('dashboard.index_page')
-            return jsonify({'result': True, 'redirect': dashboard_url})
+            prev_url = ''
+            if request.referrer:
+                prev_query = parse.urlparse(request.referrer).query
+                if prev_query and parse.parse_qs(prev_query).get('next'):
+                    prev_url = parse.parse_qs(prev_query).get('next')[0]
+            redirect_url = prev_url or url_for('dashboard.index_page')
+            return jsonify({'result': True, 'redirect': redirect_url})
         return jsonify({'result': False, 'errors': ['Invalid username or password.']})
     else:
         return jsonify({'result': False, 'errors': ['Invalid username or password.']})

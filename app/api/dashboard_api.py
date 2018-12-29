@@ -1,29 +1,10 @@
 from flask import render_template, redirect, request, url_for, flash, jsonify, current_app
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, current_user, login_required
 from app import db
 from app import get_vendor
-
 from app.blueprints.dashboard_blueprint import dashboard_blueprint
+from app.utils.custom_login_required_api_decorator import login_required_for_api
 
-@dashboard_blueprint.before_app_request
-def before_request():
-    if request.endpoint \
-        and request.blueprint != 'auth' \
-        and request.endpoint != 'static':
-            url_redirect = ''
-            if current_user.is_authenticated:
-                if not current_user.confirmed:
-                    url_redirect = url_for('auth.confirm_email', userid = str(current_user.id))
-            else:
-                url_redirect = url_for('auth.login_page')
-            if request.path.startswith('/api'):
-                # This is for API calls
-                if url_redirect:
-                    return jsonify({'result': False, 'redirect': url_redirect})
-            else:
-                # This is for pages calls
-                if url_redirect:
-                    return redirect(url_redirect)
 
 @dashboard_blueprint.route('/dashboard', methods=['GET'], defaults={'path': None})
 @dashboard_blueprint.route('/dashboard/<path:path>', methods=['GET'])
@@ -35,7 +16,7 @@ def index_page(path):
 
 # API routes
 @dashboard_blueprint.route('/api/userdata', methods=['GET'])
-@login_required
+@login_required_for_api
 def get_current_user_data():
     return jsonify({
         'result': True,
@@ -46,7 +27,7 @@ def get_current_user_data():
     })
 
 @dashboard_blueprint.route('/api/userdata', methods=['POST'])
-@login_required
+@login_required_for_api
 def update_current_user_data():
     user_data = request.get_json();
     current_user.username = user_data['username']

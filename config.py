@@ -19,7 +19,7 @@ class Config(object):
     MAIL_SUBJECT_PREFIX = 'Your company name'
     COMPANY_NAME = 'Your company name' # Change to your company name
     TRIAL_PERIOD_IN_DAYS = 14 # Change to your trial (in days, it's 2 weeks by default). Put 0 if no trial
-    SAAS_API_KEY = os.environ.get('saas_api_key1') # Your api key for project-member
+    SAAS_API_KEY = os.environ.get('saas_api_key') # Your api key for project-member
     SAAS_API_EMAIL = 'your_email_registered_in_project' # Your email as project-member
     # Mail sending settings (For privateemail by default)
     MAIL_SERVER = os.environ.get('mail_server')

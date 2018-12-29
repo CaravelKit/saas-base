@@ -68,6 +68,7 @@ def init_payment_vendor(app):
 def initialize_libraries(app):
     db.init_app(app)
     login_manager.init_app(app)
+    login_manager.login_view = 'auth.login_page'
     csrf.init_app(app)
     mail.init_app(app)
     alembic.init_app(app)

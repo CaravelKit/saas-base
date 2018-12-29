@@ -198,15 +198,11 @@ export default {
                     return planObject;
                 });
             } else {
-                self.error = 'Something went wrong. Please try again.';
+                self.error = (response.data.errors && response.data.errors.length ? 
+                    response.data.errors[0] : 'Something went wrong. Please try again.');
             }
         }).catch(function(err){
-            if (err){
-                if (err.request.status == 500){
-                    // Show error message // to-do: the error message should be got from the server, not generated here.
-                    self.error = 'Some error occured. Please try again.';
-                }
-            }
+            self.error = 'Some error occured. Please try again.';
         });
     },
     methods: {
@@ -226,12 +222,11 @@ export default {
                     self.$store.commit('updateValidStatus', response.data.valid);
                     self.success = response.data.text;
                 } else {
-                    self.error = response.data.message || 'Something went wrong. Please try again.';
+                    self.error = (response.data.errors && response.data.errors.length ? 
+                        response.data.errors[0] : 'Something went wrong. Please try again.');
                 }
             }).catch(function(err){
-                if (err){
-                    self.error = 'Some error occured. Please try again.';
-                }
+                self.error = 'Some error occured. Please try again.';
             });
         },
         isPlanInUse: function(planId){
@@ -275,16 +270,11 @@ export default {
                     self.$store.commit('updatePlanName', data.plan_name);
                     self.success = response.data.account_status_text;
                 } else {
-                    self.error = response.data.message || 'Something went wrong. Please try again.';
+                    self.error = (response.data.errors && response.data.errors.length ? 
+                        response.data.errors[0] : 'Something went wrong. Please try again.');
                 }
             }).catch(function(err){
-                if (err && err.request){
-                    if (err.request.status == 500){
-                        self.error = 'Some error occured. Please try again.'
-                    }
-                } else {
-                    self.error = (err && err.message) || 'Some error occured. Please try again.';
-                }
+                self.error = 'Some error occured. Please try again.'
             }).then(function(){
                 self.buyInProgress = false;
                 $('#paymentMethodModal').modal('hide');
@@ -328,7 +318,8 @@ export default {
                     self.$store.commit('updateAccountStatusText', response.data.account_status_text);
                     self.success = response.data.account_status_text;
                 } else {
-                    self.error = response.data.message || 'Something went wrong. Please try again.';
+                    self.error = (response.data.errors && response.data.errors.length ? 
+                        response.data.errors[0] : 'Something went wrong. Please try again.');
                 }
             }).catch(function(err){
                 if (err && err.request){
@@ -358,7 +349,8 @@ export default {
                     self.$store.commit('updateAccountStatusText', response.data.account_status_text);
                     self.success = response.data.account_status_text;
                 } else {
-                    self.error = response.data.message || 'Something went wrong. Please try again.';
+                    self.error = (response.data.errors && response.data.errors.length ? 
+                        response.data.errors[0] : 'Something went wrong. Please try again.');
                 }
             }).catch(function(err){
                 if (err && err.request){

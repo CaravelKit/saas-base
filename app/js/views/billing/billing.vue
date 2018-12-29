@@ -27,12 +27,11 @@ export default {
             if (response && response.data.result){
                 self.$store.commit('updateAccountInfo', response.data.info); 
             } else {
-                self.error = 'Something went wrong. Please try again.';
+                self.error = (response.data.errors && response.data.errors.length ? 
+                    response.data.errors[0] : 'Something went wrong. Please try again.');
             }
         }).catch(function(err){
-            if (err){
-                self.error = 'Some error occured. Please try again.';
-            }
+            self.error = 'Some error occured. Please try again.';
         });
     }
 }

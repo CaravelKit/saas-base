@@ -9,34 +9,14 @@ from app.blueprints.billing_blueprint import billing_blueprint
 from app.DAL.models.account_module import Account, AccountHistory
 from app.DAL.constants.account_status import AccountStatus, ValidStatus
 from app.DAL.constants.events import EventType
+from app.utils.custom_login_required_api_decorator import login_required_for_api
 
 from app import get_vendor
 
 
-@billing_blueprint.before_app_request
-def before_request():
-    if request.endpoint \
-        and request.blueprint != 'auth' \
-        and request.endpoint != 'static':
-            url_redirect = ''
-            if current_user.is_authenticated:
-                if not current_user.confirmed:
-                    url_redirect = url_for('auth.confirm_email', userid = str(current_user.id))
-            else:
-                url_redirect = url_for('auth.login_page')
-            if request.path.startswith('/api'):
-                # This is for API calls
-                if url_redirect:
-                    return jsonify({'result': False, 'redirect': url_redirect})
-            else:
-                # This is for pages calls
-                if url_redirect:
-                    return redirect(url_redirect)
-
-
 # API routes
 @billing_blueprint.route('/api/billing/account', methods=['GET'])
-@login_required
+@login_required_for_api
 def get_user_account():
     # Determine if account is valid
     current_user.account.check_account_status()
@@ -59,7 +39,7 @@ def get_user_account():
     })
 
 @billing_blueprint.route('/api/billing/history', methods=['GET'])
-@login_required
+@login_required_for_api
 def get_user_billing_history():
     data = current_user.account.account_history.order_by(desc(AccountHistory.date)).limit(100).all()
     history_data = json.loads(json.dumps([row.toDict() for row in data]))
@@ -70,7 +50,7 @@ def get_user_billing_history():
     
 
 @billing_blueprint.route('/api/billing/plan/list', methods=['GET'])
-@login_required
+@login_required_for_api
 def get_current_plans():
     vendor = get_vendor()
     plans = vendor.get_plans()
@@ -79,61 +59,9 @@ def get_current_plans():
         'plans': plans
     })
 
-# Start trial plan
-'''
-@billing_component.route('/api/billing/plan/trial', methods=['POST'])
-@login_required
-def start_trial():
-    vendor = get_vendor()
-    plans = vendor.get_plans()
-    plan_id = request.json['planId']
-
-    current_user.account.check_account_status()
-    if current_user.account.account_status == AccountStatus.trial.value:
-        if current_user.account.valid_status == ValidStatus.valid.value:
-            #if plan_id == current_user.account.plan_id: # to-do: should user be able to change plan diring trial?
-            return jsonify({
-                'result': False,
-                'message': 'You already started your trial.'
-            })
-        else: 
-            return jsonify({
-                'result': False,
-                'message': 'Sorry but your trial is expired.'
-            })
-    else:
-        if (current_user.account.account_status == AccountStatus.paid.value or
-            current_user.account.account_status == AccountStatus.cancelled.value or
-            current_user.account.account_status == AccountStatus.paid.paused):
-            return jsonify({
-                'result': False,
-                'message': 'You already started paid subscription so you cannot start a trial.'
-            })
-        
-    # Everything is okay, start a trial
-    current_user.account.plan_id = plan_id
-    current_user.account.account_status = AccountStatus.trial.value
-    trial_days = current_app.config['TRIAL_PERIOD_IN_DAYS']
-    current_user.account.trial_expiration = DateTime.today() + TimeDelta(days = trial_days)
-    str_valid_time = current_user.account.trial_expiration.strftime('%d, %b %Y %H:%M')
-    current_user.account.payment_method_text = 'Your trial is activated and valid till ' + \
-        str_valid_time
-    account_event = create_history_event(EventType.trial_started, 'Started a trial, expiration date is ' + str_valid_time)
-    db.session.add(account_event)
-    db.session.add(current_user)
-    db.session.commit()
-    
-    return jsonify({
-        'result': True,
-        'text': current_user.account.payment_method_text,
-        'status': current_user.account.account_status,
-        'valid': current_user.account.valid_status
-    })
-'''
-
 # Saves the method information for the current user
 @billing_blueprint.route('/api/billing/paymentMethod', methods=['POST'])
-@login_required
+@login_required_for_api
 def save_payment_method():
     vendor = get_vendor() # to-do: make it based on request.json['vendor'] what is currently 'stripe' ??
     skey = vendor.get_secret_key()
@@ -165,7 +93,7 @@ def save_payment_method():
 
 # Start subscription and buy it
 @billing_blueprint.route('/api/billing/subscription', methods=['POST'])
-@login_required
+@login_required_for_api
 def start_subscription():
     vendor = get_vendor()
     skey = vendor.get_secret_key()
@@ -216,7 +144,7 @@ def start_subscription():
 
 # Cancel/pause subscription
 @billing_blueprint.route('/api/billing/subscription/cancelpause', methods=['POST'])
-@login_required
+@login_required_for_api
 def cancel_subscription():
     vendor = get_vendor()
     skey = vendor.get_secret_key()
