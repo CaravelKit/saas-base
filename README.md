@@ -1,4 +1,4 @@
-# SaaS Boilerplate  [![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social)](https://twitter.com/intent/tweet?text=SaaS%20Python%20boilerplate%20with%20Vuejs%20and%20Webpack&url=https://www.saasidea.io&hashtags=SaaS,Python,developers)
+# SaaS Boilerplate
 
 
 This free SaaS boilerplate allows you to create a working SaaS application with minimal efforts. What it already has:
@@ -103,7 +103,7 @@ python -m venv venv
 3. Add necessarily environment variables:
 * Find venv/Scripts/activate.bat file, open in a text editor (__Important! Don't use Notepad++ as for some reason it spoils the file.__)
 * Add the following variables before _:END_:
-	* set FLASK_APP=main
+	* set FLASK_APP=application
 	* set env=dev
 	* set "db_url=postgres://user:password@dbhost:port/database"
 	* set "secret_key=your_local_secret_key"
@@ -211,7 +211,7 @@ change/add the following code:
 var routes = [
     ...
     { 
-        path: '/dashboard/user/profile', 
+        path: '/user/profile', 
         component: UserProfile,
         name: 'userProfile',
         meta: {
@@ -252,7 +252,7 @@ We prefer MS VS Code. It's free and have tons of plugins for any language and fr
 	"request": "launch",
 	"module": "flask",
 	"env": {
-		"FLASK_APP": "main.py"
+		"FLASK_APP": "application.py"
 	},
 	"args": [
 		"run",

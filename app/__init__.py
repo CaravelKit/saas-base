@@ -8,9 +8,6 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_mail import Mail
 from flask_alembic import Alembic
 
-
-
-
 from config import ConfigHelper
 
 db = SQLAlchemy()
@@ -31,6 +28,7 @@ def create_app():
     dist_folder = os.path.abspath(os.path.join(app.root_path,"../static"))
     app.static_folder = dist_folder
     app.static_url_path='/static'
+    app_path = app.root_path
     app.url_map.strict_slashes = False
     app.config.from_object(ConfigHelper.set_config(sys.argv))
     initialize_libraries(app)
@@ -53,32 +51,34 @@ def redefine_delimiters(app):
     ))
     app.jinja_options = jinja_options
 
+def init_app_path(path):
+    global app_path
+    app_path = path
+
 def init_db(option, app):
-    import app.utils.scaffold as scaffold
-    scaffold.reinit_db(option)
+    import app.utils.dbscaffold as dbscaffold
+    dbscaffold.reinit_db(option)
 
 def init_payment_vendor(app):
-    global vendor, tst
-    from .units.billing.vendor import Vendor_Stripe # to-do it dynamically
-    vendor = Vendor_Stripe() # to-do: vendor is selected based on config
+    global vendor
+    from app.DAL.services.vendor import Vendor_Stripe, Vendor_base # to-do it dynamically
+    vendor = Vendor_Stripe(app) # to-do: vendor is selected based on config
     vendor.init_keys()
 
 def initialize_libraries(app):
-    from app.utils import scaffold
-
     db.init_app(app)
     login_manager.init_app(app)
+    login_manager.login_view = 'auth.login_page'
     csrf.init_app(app)
     mail.init_app(app)
     alembic.init_app(app)
 
 def register_blueprints(app):
-    from app.units.main import main_component # to-do: rename to units
-    from app.units.auth import auth_component
-    from app.units.dashboard import dashboard_component
-    from app.units.dashboard.components.billing import billing_component
+    from app.blueprints.auth_blueprint import auth_blueprint
+    from app.blueprints.dashboard_blueprint import dashboard_blueprint
+    from app.blueprints.billing_blueprint import billing_blueprint
 
-    blueprints = [main_component, auth_component, dashboard_component, billing_component] # Add a new blueprint here # to-do: automate it
+    blueprints = [auth_blueprint, dashboard_blueprint, billing_blueprint] # Add a new blueprint here # to-do: automate it
     for blueprint in blueprints:
         app.register_blueprint(blueprint)
     
@@ -105,3 +105,4 @@ def page_not_found(e):
 def page_server_error(e):
     from app.utils import error_handler
     return error_handler.app_error(error_title='CRITICAL ERROR', error_text='Something went wrong... please try again.'), 500
+

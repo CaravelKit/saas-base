@@ -1,25 +1,44 @@
 import os
+
 basedir = os.path.abspath(os.path.dirname(__file__))
 
-from app.constants.hosting import HostingType
-
-
 class Config(object):
+    @staticmethod
+    def get_secure_variable(var_name = ''):
+        if var_name != '' and var_name in os.environ:
+            return os.environ[var_name]
+        return None
+
+    #_ANS = get_secure_variable.__func__(var_name = '')
+
     ENV = ''
     DEBUG = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    HOSTING = HostingType.local
     SQLALCHEMY_DATABASE_URI = ''
     CSRF_KEY = ''
-    MAIL_SUBJECT_PREFIX = 'Your service name'
+    MAIL_SUBJECT_PREFIX = 'Your company name'
     COMPANY_NAME = 'Your company name' # Change to your company name
     TRIAL_PERIOD_IN_DAYS = 14 # Change to your trial (in days, it's 2 weeks by default). Put 0 if no trial
+    SAAS_API_KEY = os.environ.get('saas_api_key') # Your api key for project-member
+    SAAS_API_EMAIL = 'your_email_registered_in_project' # Your email as project-member
+    # Mail sending settings (For privateemail by default)
+    MAIL_SERVER = os.environ.get('mail_server')
+    MAIL_PORT = os.environ.get('mail_port')
+    MAIL_USE_SSL = True
+    MAIL_USE_TLS = False
+    MAIL_USERNAME = os.environ.get('mail_username')
+    SECURITY_EMAIL_SENDER = os.environ.get('mail_username')
+    MAIL_DEFAULT_SENDER = os.environ.get('mail_username')
+    MAIL_PASSWORD = os.environ.get('mail_password')
+    ADMIN_EMAIL = os.environ.get('admin_email')
 
 
 class ProductionConfig(Config):
     ENV = 'prod'
     DEBUG = False
-    HOSTING = HostingType.google_app_engine
+    SAAS_API_URL = 'https://www.saasidea.io'
+    STRIPE_PUBLISHABLE_KEY = Config.get_secure_variable('STRIPE_PUBLISHABLE_KEY')
+    STRIPE_SECRET_KEY = Config.get_secure_variable('STRIPE_SECRET_KEY')
 
     # The values below MUST store in the hosting config variables
     #SQLALCHEMY_DATABASE_URI
@@ -31,18 +50,12 @@ class DevelopmentConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
     SQLALCHEMY_DATABASE_URI = os.environ['db_url'] # Store it in the hosting config
-    SECRET_KEY = os.environ['secret_key'] # Store it in the hosting config
-    SECRET_SALT = os.environ['secret_salt'] # Store it in the hosting config
-    MAIL_SERVER = os.environ['mail_server']
-    MAIL_PORT = os.environ['mail_port']
-    MAIL_USE_SSL = True
-    MAIL_USE_TLS = False
-    MAIL_USERNAME = os.environ['mail_username']
-    SECURITY_EMAIL_SENDER = os.environ['mail_username']
-    MAIL_DEFAULT_SENDER = os.environ['mail_username']
-    MAIL_PASSWORD = os.environ['mail_password']
-    ADMIN_EMAIL = os.environ['admin_email']
+    SECRET_KEY = Config.get_secure_variable('secret_key') # Store it in the hosting config
+    SECRET_SALT = Config.get_secure_variable('secret_salt') # Store it in the hosting config
     TRIAL_PERIOD_IN_DAYS = 1 # Change it or remove it
+    SAAS_API_URL = 'http://127.0.0.1:5000'
+    STRIPE_PUBLISHABLE_KEY = Config.get_secure_variable('TEST_STRIPE_PUBLISHABLE_KEY')
+    STRIPE_SECRET_KEY = Config.get_secure_variable('TEST_STRIPE_SECRET_KEY')
 
 
 class TestingConfig(Config):
@@ -55,6 +68,7 @@ config = {
     'prod': ProductionConfig,
     'default' : DevelopmentConfig
 }
+
 
 class ConfigHelper:
 

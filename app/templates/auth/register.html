@@ -1,0 +1,20 @@
+{% extends "auth/baseAuth.html" %}
+{% block title %} Registration {% endblock %}
+{%block page_title%} Please register {%endblock%}
+{% block page_content %}
+    <label for="inputUserName">User name (visible by others)</label>
+    <input type="text" id="inputUserName" class="form-control" placeholder="User name" v-model="data.username"  autofocus>
+
+    <label for="inputEmail">Email address</label>
+    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" v-model="data.email" >
+    
+    <label for="inputPassword">Password</label>
+    <input type="password" id="inputPassword" class="form-control" placeholder="Password"  v-model="data.password">
+
+    <label for="inputPassword">Confirm password</label>
+    <input type="password" id="inputPassword2" class="form-control" placeholder="Enter password again"  v-model="data.password2">
+
+    <p>Already have an account? Sign in <a href="/login">here</a>.</p>
+
+    <button class="btn btn-lg btn-primary btn-block" @click="checkRegisterForm">Create account</button>
+{% endblock %}

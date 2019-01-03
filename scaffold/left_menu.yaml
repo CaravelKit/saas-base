@@ -1,0 +1,38 @@
+# Note: all pathes are relative to root path with the project
+meta:
+    file_output: app\templates\leftMenu.html
+    routes_file: app\js\userRoutes.js
+    components_folder:  # Folder located in app\js\views folder, leave empty if you want all components in views folder
+    generate_vue_components: yes
+    breadcrumbs: yes
+    rewrite: yes
+menu:
+  - name: Route with href11 
+    href: '/table' # or auto
+    icon: fas fa-battery-half
+  - name: Route with href and params
+    href: '/table/:userId' # or auto
+    icon: fas fa-battery-half
+    params: '{ userId: 123 }'
+  - name: Menu with auto href
+    href: auto
+    component: SamplePage
+  - name: Complex menu with href
+    href: '/sample'
+    icon: fas fa-binoculars
+    submenu:
+      - name: Subpage with href
+        icon: fab fa-apple
+        href: '/billing'
+      - name: Brands options auto
+        href: auto
+      - name: Subpage without href
+  - name: Menu without href
+    submenu:
+      - name: aaa
+      - name: bbb
+  - name: Menu suto
+    href: auto
+    submenu:
+      - name: aaa1
+      - name: bbb1

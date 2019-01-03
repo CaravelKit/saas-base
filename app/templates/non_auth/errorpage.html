@@ -1,0 +1,7 @@
+{% extends "non_auth/baseNonAuth.html" %}
+{% block title %} Error {% endblock %}
+{%block page_title%} ${error_title} {%endblock%}
+{% block page_content %}
+    <p>${error_text}</p> 
+    <p>Please click the <a href="/login">login link</a> or <a href="/register">register</a> to authorize.</p>
+{% endblock %}

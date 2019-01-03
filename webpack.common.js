@@ -4,10 +4,10 @@ const { VueLoaderPlugin } = require('vue-loader')
 
 module.exports = {
     entry: {
-        auth: './app/units/auth/js/appAuth.js',
-        dashboard: './app/units/dashboard/js/appDashboard.js',
-        authStyles: './app/units/auth/js/authStyles.js',
-        dashboardStyles: './app/units/dashboard/js/dashboardStyles.js'
+        auth: './app/js/appAuth.js',
+        dashboard: './app/js/appDashboard.js',
+        authStyles: './app/js/styles/stylesAuth.js',
+        dashboardStyles: './app/js/styles/stylesDashboard.js'
     },
     output: {
         filename: '[name].bundle.js',
@@ -57,6 +57,10 @@ module.exports = {
         {
             test: /\.vue$/,
             use: 'vue-loader'
+        },
+        {
+            test: /\.html$/, 
+            use: 'html-loader' 
         }
     ]}
 };
