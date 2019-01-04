@@ -3,22 +3,98 @@
     to keep everything the same) -->
 <ul class="list-unstyled components sidebar navbar-nav" v-bind:class="{ 'toggled': !sideBarOpened }">
     <li class="nav-item active">
-        <a href="#li4d6c87bf" class="nav-link collapsed" data-toggle="collapse" 
-                aria-expanded="false" @click="openUrl('SamplePage')" >Complex sample page</a>
+        <a href="#" class="nav-link" @click="openUrl('Route_with_href11')">
+                <i class="fas fa-battery-half"></i>
+                Route with href11
+            </a>
+        </li>
+    <li class="nav-item active">
+        <a href="#" class="nav-link" @click="openUrl('Route_with_href_and_params', { userId: 123 })">
+                <i class="fas fa-battery-half"></i>
+                Route with href and params
+            </a>
+        </li>
+    <li class="nav-item active">
+        <a href="#" class="nav-link" @click="openUrl('SamplePage')">
+                Menu with auto href
+            </a>
+        </li>
+    <li class="nav-item active">
+        <a href="#lia4abd8f7" class="nav-link collapsed" data-toggle="collapse" 
+                aria-expanded="false" @click="openUrl('Complex_menu_with_href')" >Complex menu with href</a>
             <!--arrow menu toggle-->
-            <a href="#li4d6c87bf" 
+            <a href="#lia4abd8f7" 
                 data-toggle="collapse" aria-expanded="false" class="collapsed">
                 <i class="arrow-submenu"></i>
             </a>
 
             <!--submenu items-->
-            <ul class="collapse list-unstyled" id="li4d6c87bf">
+            <ul class="collapse list-unstyled" id="lia4abd8f7">
                 <li>
-                    <a href="#" class="left-submenu-item" @click="openUrl('SampleTable')">
+                    <a href="#" class="left-submenu-item" @click="openUrl('Subpage_with_href')">
                         <i class="fab fa-apple"></i>
-                        Page with sample table
+                        Subpage with href
                     </a>
                 </li>
-            </ul>           
+                <li>
+                    <a href="#" class="left-submenu-item" @click="openUrl('Brands_options_auto')">
+                        Brands options auto
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="left-submenu-item" @click="openUrl('Subpage_without_href')">
+                        Subpage without href
+                    </a>
+                </li>
+                </ul>
+            
+        </li>
+    <li class="nav-item active">
+        <a href="#liaaea896a" class="nav-link collapsed" data-toggle="collapse" 
+                aria-expanded="false" @click="openUrl('Menu_without_href')" >Menu without href</a>
+            <!--arrow menu toggle-->
+            <a href="#liaaea896a" 
+                data-toggle="collapse" aria-expanded="false" class="collapsed">
+                <i class="arrow-submenu"></i>
+            </a>
+
+            <!--submenu items-->
+            <ul class="collapse list-unstyled" id="liaaea896a">
+                <li>
+                    <a href="#" class="left-submenu-item" @click="openUrl('aaa')">
+                        aaa
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="left-submenu-item" @click="openUrl('bbb')">
+                        bbb
+                    </a>
+                </li>
+                </ul>
+            
+        </li>
+    <li class="nav-item active">
+        <a href="#li25dbe853" class="nav-link collapsed" data-toggle="collapse" 
+                aria-expanded="false" @click="openUrl('Menu_suto')" >Menu suto</a>
+            <!--arrow menu toggle-->
+            <a href="#li25dbe853" 
+                data-toggle="collapse" aria-expanded="false" class="collapsed">
+                <i class="arrow-submenu"></i>
+            </a>
+
+            <!--submenu items-->
+            <ul class="collapse list-unstyled" id="li25dbe853">
+                <li>
+                    <a href="#" class="left-submenu-item" @click="openUrl('aaa1')">
+                        aaa1
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="left-submenu-item" @click="openUrl('bbb1')">
+                        bbb1
+                    </a>
+                </li>
+                </ul>
+            
         </li>
     </ul>

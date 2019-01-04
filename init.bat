@@ -3,6 +3,6 @@ call python -m pip install --upgrade pip
 call pip install -r requirements.txt
 call npm install
 REM use flask dbcreate for dropping existing database and rolling all new tabels
-call flask dbupdate
+REM call flask dbupdate
 call npm run dev
 call flask run

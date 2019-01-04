@@ -56,6 +56,8 @@ class DevelopmentConfig(Config):
     SAAS_API_URL = 'http://127.0.0.1:5000'
     STRIPE_PUBLISHABLE_KEY = Config.get_secure_variable('TEST_STRIPE_PUBLISHABLE_KEY')
     STRIPE_SECRET_KEY = Config.get_secure_variable('TEST_STRIPE_SECRET_KEY')
+    SAAS_API_KEY = '1e687207025b4bd2becdd72ffa97647b'
+    SAAS_API_EMAIL = 'kate.kleim@gmail.com'
 
 
 class TestingConfig(Config):

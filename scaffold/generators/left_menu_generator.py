@@ -57,7 +57,8 @@ def generate_code(yaml_name):
             if result_json.get('errors') is not None else '''Some error occured on the server. 
             Please retry you request. If this message 
             persists please ask for the assistance at support''')
-        raise Exception(err_text)
+        print('ERROR: ', err_text)
+        return
     
     result = result_json['render']
     #print(result['interface_components_render']['components'][0]['content'])
@@ -77,7 +78,7 @@ def generate_code(yaml_name):
     common.create_write_file(routes_file_name, result['interface_components_render']['routes'], rewrite, 
         comment_start = r'/*', comment_end = r'*/')
 
-    print('Scaffolding done.')
+    
     # 5. Components folders/files
     for component in result['interface_components_render']['components']:
         file_component_name = (component['name'] if component['parent'] is None else (component['parent'] + 
@@ -91,18 +92,8 @@ def generate_code(yaml_name):
         common.create_write_file(full_file_name, 
             component['content'], 
             rewrite)
-
-        '''
-        folder_name = component['name'] if component['parent'] is None else component['parent']
-        component_file_path = os.path.join(yaml_object['meta']['components_folder'], 
-            folder_name,
-            component['name'] + '.vue')
-        component_file_name = get_path_to_include(component_file_path)
-        #print(component_file_name)
-        common.create_write_file(component_file_name, 
-            component['content'], 
-            rewrite)
-        '''
+    print('Scaffolding done.')
+    print('Scaffolding calls left: ', result_json['api_calls_left'])
     
     
 
