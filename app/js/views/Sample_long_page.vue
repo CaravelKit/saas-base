@@ -54,6 +54,7 @@
             <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         
         </div> THIS IS VERY LONG PAGE with a sample table
+        <div><strong>Instruction: </strong>scroll to the bottom to see the button on the right for the quick getting up.</div>
         <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>Text<p>&nbsp;</p>Text<p>&nbsp;</p>
         <p>&nbsp;</p><p>&nbsp;</p>Text<p>&nbsp;</p>
         <p class="small text-center text-muted my-5">
@@ -61,3 +62,16 @@
         </p>
     </div>
 </template>
+
+<script>
+export default {
+    name: 'Sample_long_page',
+    data () {
+            return {
+            }
+    }
+}
+</script>
+
+<style>
+</style>

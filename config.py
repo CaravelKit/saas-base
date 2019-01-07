@@ -37,8 +37,8 @@ class ProductionConfig(Config):
     ENV = 'prod'
     DEBUG = False
     SAAS_API_URL = 'https://www.saasidea.io'
-    STRIPE_PUBLISHABLE_KEY = Config.get_secure_variable('STRIPE_PUBLISHABLE_KEY')
-    STRIPE_SECRET_KEY = Config.get_secure_variable('STRIPE_SECRET_KEY')
+    STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+    STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
     # The values below MUST store in the hosting config variables
     #SQLALCHEMY_DATABASE_URI
@@ -49,15 +49,15 @@ class DevelopmentConfig(Config):
     ENV = 'dev'
     DEVELOPMENT = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ['db_url'] # Store it in the hosting config
-    SECRET_KEY = Config.get_secure_variable('secret_key') # Store it in the hosting config
-    SECRET_SALT = Config.get_secure_variable('secret_salt') # Store it in the hosting config
+    SQLALCHEMY_DATABASE_URI = os.environ.get('db_url') # Store it in the hosting config
+    SECRET_KEY = os.environ.get('secret_key') # Store it in the hosting config
+    SECRET_SALT = os.environ.get('secret_salt') # Store it in the hosting config
     TRIAL_PERIOD_IN_DAYS = 1 # Change it or remove it
     SAAS_API_URL = 'http://127.0.0.1:5000'
-    STRIPE_PUBLISHABLE_KEY = Config.get_secure_variable('TEST_STRIPE_PUBLISHABLE_KEY')
-    STRIPE_SECRET_KEY = Config.get_secure_variable('TEST_STRIPE_SECRET_KEY')
-    SAAS_API_KEY = ''
-    SAAS_API_EMAIL = ''
+    STRIPE_PUBLISHABLE_KEY = os.environ.get('TEST_STRIPE_PUBLISHABLE_KEY')
+    STRIPE_SECRET_KEY = os.environ.get('TEST_STRIPE_SECRET_KEY')
+    SAAS_API_KEY = os.environ.get('saas_api_key')
+    SAAS_API_EMAIL = os.environ.get('saas_api_email')
 
 
 class TestingConfig(Config):

@@ -7,32 +7,13 @@ meta:
     breadcrumbs: yes
     rewrite: yes
 menu:
-  - name: Route with href11 
-    href: '/table' # or auto
-    icon: fas fa-battery-half
-  - name: Route with href and params
-    href: '/table/:userId' # or auto
-    icon: fas fa-battery-half
-    params: '{ userId: 123 }'
-  - name: Menu with auto href
+  - name: Sample long page 
+    href: '/sample' # or auto
+    icon: far fa-file
+  - name: UI Element library
     href: auto
-    component: SamplePage
-  - name: Complex menu with href
-    href: '/sample'
-    icon: fas fa-binoculars
+    icon: fas fa-football-ball
     submenu:
-      - name: Subpage with href
-        icon: fab fa-apple
-        href: '/billing'
-      - name: Brands options auto
-        href: auto
-      - name: Subpage without href
-  - name: Menu without href
-    submenu:
-      - name: aaa
-      - name: bbb
-  - name: Menu suto
-    href: auto
-    submenu:
-      - name: aaa1
-      - name: bbb1
+      - name: Simple elements
+        href: '/library/simple'
+        icon: far fa-star

@@ -9,7 +9,7 @@ from app.utils.custom_login_required_api_decorator import login_required_for_api
 @dashboard_blueprint.route('/', methods=['GET'])
 @login_required
 def index_page_without_params():
-    return redirect('/samplePage')
+    return redirect('/sample')
 
 @dashboard_blueprint.route('/<path:path>', methods=['GET'])
 @login_required

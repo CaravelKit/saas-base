@@ -8,7 +8,6 @@ import 'bootstrap';
 var moment = require('moment');
 import LeftMenu from './leftMenu.js';
 import UserProfile from './views/dashboard/userProfile.vue';
-import SamplePage from './views/dashboard/samplePage.vue';
 import PageNotFound from './views/dashboard/pageNotFound.vue';
 import Breadcrumbs from './views/dashboard/breadcrumbs.vue';
 import Billing from './views/billing/billing.vue';
@@ -75,15 +74,6 @@ var routes = [
             ]
         } 
     },
-    { 
-        path: '/sample', component: SamplePage,
-        meta: {
-            breadcrumb: [
-                {   name: 'Pages'    },
-                {   name: 'Sample sub menu' } // add 'link' field with name or the route
-            ]
-        }  
-    },
     {
         path: '/billing',
         component: Billing,
@@ -131,7 +121,6 @@ new Vue({
     el: '#dashboardApp',
     components: { 
         'leftmenu': LeftMenu,
-        SamplePage, 
         UserProfile, 
         Billing,
         'breadcrumbs': Breadcrumbs
