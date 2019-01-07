@@ -5,15 +5,19 @@ meta:
     components_folder:  # Folder located in app\js\views folder, leave empty if you want all components in views folder
     generate_vue_components: yes
     breadcrumbs: yes
-    rewrite: yes
+    rewrite: no
 menu:
   - name: Sample long page 
     href: '/sample' # or auto
     icon: far fa-file
   - name: UI Element library
-    href: auto
+    href: '#'
     icon: fas fa-football-ball
     submenu:
       - name: Simple elements
         href: '/library/simple'
         icon: far fa-star
+  - name: Pages
+    component: 'Pages'
+    href: auto
+    icon: far fa-file

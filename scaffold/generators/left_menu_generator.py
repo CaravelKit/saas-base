@@ -81,6 +81,8 @@ def generate_code(yaml_name):
     
     # 5. Components folders/files
     for component in result['interface_components_render']['components']:
+        if component.get('content') is None:
+            continue
         file_component_name = (component['name'] if component['parent'] is None else (component['parent'] + 
             '_' + component['name'])) + '.vue'
         components_folder = (yaml_object['meta']['components_folder'] if ('components_folder' in yaml_object['meta'] 
@@ -88,10 +90,10 @@ def generate_code(yaml_name):
             else '')
         full_file_name = get_path_to_include(os.path.join(r'js\\views', components_folder, 
             file_component_name))
-        print(full_file_name)
+        print('Component: ', full_file_name)
         common.create_write_file(full_file_name, 
             component['content'], 
-            rewrite)
+            rewrite, ignore_existing_files = True)
     print('Scaffolding done.')
     print('Scaffolding calls left: ', result_json['api_calls_left'])
     

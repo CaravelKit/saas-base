@@ -4,9 +4,15 @@ import os
 
 # Check if file and path exist, if not, create them. Then rewrite file or add content at the 
 # beginning, commenting the existing part.
-def create_write_file(file_path, new_content, rewrite = False, comment_start = '<!--', comment_end = '-->'):
+def create_write_file(file_path, new_content, rewrite = False, comment_start = '<!--', comment_end = '-->',
+    ignore_existing_files = False):
     file_param = 'r+'
-    if not os.path.exists(file_path):
+    if os.path.exists(file_path):
+        if ignore_existing_files:
+            # Ignore existing file and return
+            print('Ignore: ', file_path)
+            return
+    else:
         file_param = 'w+'
     if not os.path.exists(os.path.dirname(file_path)):
         try:
