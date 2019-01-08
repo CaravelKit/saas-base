@@ -40,11 +40,11 @@
                     <div>
                         <i class="fas fa-check icon-green"></i><span>Selected plan{{selectedPlanAdditionalStatus}}</span>
                     </div>
-                    <div v-show="$store.state.accountInfo.account_status == 'paid'">
+                    <div v-show="$store.state.accountInfo.account_status == 'paid' && plan.data.default !='trial'">
                         <button class="btn btn-pause" @click="pausePlan(plan)">Pause</button>
                         <button class="btn btn-cancel" @click="cancelPlan(plan)">Cancel</button>
                     </div>
-                    <div v-show="$store.state.accountInfo.account_status == 'paused'">
+                    <div v-show="$store.state.accountInfo.account_status == 'paused' && plan.data.default !='trial'">
                         <button class="btn btn-resume" @click="selectSubscriptionToBuy(plan)">Resume</button>
                         <button class="btn btn-cancel" @click="cancelPlan(plan)">Cancel</button>
                     </div>
