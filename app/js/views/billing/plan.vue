@@ -49,9 +49,9 @@
                         <button class="btn btn-cancel" @click="cancelPlan(plan)">Cancel</button>
                     </div>
                 </div>
-                <div v-show="plan.data.id != $store.state.accountInfo.plan_id || 
+                <div v-show="plan.data.id !=  plan.data.default !='trial' && 
                     ($store.state.accountInfo.account_status != 'paid' && $store.state.accountInfo.account_status != 'paused')">
-                    <button class="btn btn-primary" @click="selectSubscriptionToBuy(plan)">Buy a subscription</button>
+                    <button class="btn btn-primary" @click="selectSubscriptionToBuy(plan)">Purchase subscription</button>
                 </div>
             </div>
         </div>
