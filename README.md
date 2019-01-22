@@ -1,7 +1,7 @@
-# SaaS Boilerplate
+# SaaS App Template
 
 
-This free SaaS boilerplate allows you to create a working SaaS application with minimal efforts. What it already has:
+This free SaaS app template allows you to create a working SaaS application with minimal efforts. What it already has:
 
 #### User authentication ####
 * Email authentication (with email confirmation)
@@ -90,7 +90,7 @@ Before we start make sure you have installed Python 3 and Node.js. Please follow
 
 1. Download the full zip or pull code from the repository, [here](https://help.github.com/articles/which-remote-url-should-i-use/) you can find full instruction:
 ```
-git clone https://github.com/SaaS-Idea/saas-boilerplate.git
+git clone https://github.com/CaravelKit/saas-template
 cd saas-boilerplate
 ```
 2. Create a virtual environment (not necessarily but highly recommended):
@@ -282,13 +282,14 @@ This version of our SaaS boilerplate is free and it will NOT have all the featur
 
 ## Authors
 
+[Caravel Kit](https://www.caravelkit.com)
 [SaaS Idea](https://www.saasidea.io)
 
 ## License
 
-Copyright (c) 2018 SaaS Idea [www.saasidea.io](www.saasidea.io) under the [MIT license](https://opensource.org/licenses/MIT).
-If you are interested in the full-functional version please check our website [www.saasidea.io](https://www.saasidea.io) for pricing and conditions.
+Copyright (c) 2019 Caravel Kit [www.caravelkit.com](www.caravelkit.com) under the [MIT license](https://opensource.org/licenses/MIT).
+If you are interested in the full-functional version please check our website [www.caravelkit.com](https://www.caravelkit.com) for pricing and conditions.
 
 ## Feedback
 
-* If you find a bug please open an issue or drop us a line at [info@saas-idea.com](info@saas-idea.com).
+* If you find a bug please open an issue or drop us a line at [info@caravelkit.com](info@caravelkit.com).
