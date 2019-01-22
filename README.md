@@ -1,5 +1,6 @@
 # SaaS App Template
 
+__Warning. This repo is rebranded from SaaS-Idea. Please update your urls.__
 
 This free SaaS app template allows you to create a working SaaS application with minimal efforts. What it already has:
 
@@ -283,6 +284,7 @@ This version of our SaaS boilerplate is free and it will NOT have all the featur
 ## Authors
 
 [Caravel Kit](https://www.caravelkit.com)
+
 [SaaS Idea](https://www.saasidea.io)
 
 ## License
