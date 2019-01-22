@@ -1,8 +1,8 @@
-# SaaS App Template
+# SaaS Base Application
 
 __Warning. This repo is rebranded from SaaS-Idea. Please update your urls.__
 
-This free SaaS app template allows you to create a working SaaS application with minimal efforts. What it already has:
+This free SaaS base application allows you to create a working SaaS with minimal efforts. What it already has:
 
 #### User authentication ####
 * Email authentication (with email confirmation)
