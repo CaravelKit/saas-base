@@ -138,7 +138,7 @@ class Vendor_Stripe(Vendor_base):
         try:
             # Firstly cancel any existing subscription
 
-            if kwargs['current_subscription_id'] != None:
+            if kwargs['current_subscription_id']:
                 subscription = stripe.Subscription.retrieve(kwargs['current_subscription_id'])
                 if plan_id == kwargs['current_plan_id'] and kwargs['account_status'] == 'paused':
                     # Just reactivate
@@ -156,9 +156,9 @@ class Vendor_Stripe(Vendor_base):
                         }
                     ]
                 )
-        except:
+        except Exception as ex:
             # to-do: log exception sys.exc_info()[0]
-            print(exc_info()[0])
+            print(ex)
         if subscription is None:
             return {
                 'result': False,

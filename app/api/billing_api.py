@@ -166,12 +166,12 @@ def cancel_subscription():
         else:
             current_user.account.account_status = AccountStatus.cancelled.value  
             current_user.account.account_status_text = 'The subscription was cancelled.'
+            current_user.account.subscription_id = None
         if current_user.account.payment_expiration < DateTime.now():
             current_user.account.payment_expiration = None
             current_user.account.valid_status = ValidStatus.invalid.value 
             current_user.account.plan_name = ''
             current_user.account.plan_id = None
-            current_user.account.subscription_id = ''
         else:   
             current_user.account.account_status_text += (' But you still have an access to the service until ' + 
                 current_user.account.payment_expiration.strftime('%d, %b %Y') + '.')
