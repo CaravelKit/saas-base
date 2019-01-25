@@ -197,6 +197,7 @@ export default {
                     planObject.success = '';
                     return planObject;
                 });
+                _.remove(self.plans, {data: {default: 'trial'}});
             } else {
                 self.error = (response.data.errors && response.data.errors.length ? 
                     response.data.errors[0] : 'Something went wrong. Please try again.');

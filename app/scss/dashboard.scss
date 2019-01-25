@@ -12,8 +12,11 @@ html {
 
 body {
     font-family: 'Open Sans', sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     height: 100%;
+}
+[v-cloak] { 
+    display:none; 
 }
 
 #wrapper {
@@ -192,7 +195,7 @@ a.collapsed .arrow-submenu:after {
     padding: 0.75rem 1rem;
     width: 90px;
     position: relative;
-    font-size: 14px;
+    font-size: 13px;
     color: #f3f1f1;
 }
 
@@ -603,6 +606,8 @@ td .btn {
     border: 1px solid #c5c8ca;
     box-shadow: 0 0 0 0.2rem rgba(167,184,202,.12);
     background-color: #fff;
+    font-size: 14px;
+    height: 35px;
 }
 .modal-dialog {
     max-width: 1000px !important;

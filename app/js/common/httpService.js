@@ -1,10 +1,10 @@
 const axios = require('axios');
 
 var httpService = {
-    init: function(csrftoken){
+    init: function(){
         axios.defaults.headers.common = {
-            "X-Requested-With": "XMLHttpRequest",
-            "X-CSRFToken": csrftoken
+            'X-Requested-With': 'XMLHttpRequest',
+            'X-CSRFToken': window.csrf_token
             };
     },
     formFullUrl: function(rootUrl, entityUrl){
@@ -22,5 +22,5 @@ var httpService = {
         return axios.get(url);
     }
 };
-httpService.init(window.csrf_token);
+httpService.init();
 export { httpService };

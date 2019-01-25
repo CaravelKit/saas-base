@@ -4,10 +4,11 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 class Config(object):
     @staticmethod
-    def get_secure_variable(var_name = ''):
+    def get_secure_variable(var_name = '', default_value = None):
         if var_name != '' and var_name in os.environ:
             return os.environ[var_name]
-        return None
+        if default_value is not None:
+            return default_value
 
     #_ANS = get_secure_variable.__func__(var_name = '')
 
@@ -31,6 +32,7 @@ class Config(object):
     MAIL_DEFAULT_SENDER = os.environ.get('mail_username')
     MAIL_PASSWORD = os.environ.get('mail_password')
     ADMIN_EMAIL = os.environ.get('admin_email')
+    STRIPE_ENDPOINT_SECRET = os.environ.get('stripe_endpoint_secret')
 
 
 class ProductionConfig(Config):
@@ -58,7 +60,6 @@ class DevelopmentConfig(Config):
     STRIPE_SECRET_KEY = os.environ.get('TEST_STRIPE_SECRET_KEY')
     SAAS_API_KEY = os.environ.get('saas_api_key')
     SAAS_API_EMAIL = os.environ.get('saas_api_email')
-
 
 class TestingConfig(Config):
     ENV = 'test'

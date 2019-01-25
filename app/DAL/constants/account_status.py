@@ -10,6 +10,7 @@ class AccountStatus(Enum):
     paid = 'paid' # User started subscription and paid
     paused = 'paused' # User stopped next payment until he decides to activate it again
     cancelled = 'cancelled'
+    rejected = 'rejected'
 
 class PaymentMethodStatus(Enum):
     empty = 'empty'

@@ -117,6 +117,7 @@ python -m venv venv
     * set "TEST_STRIPE_PUBLISHABLE_KEY=your test publishable key"
     * set "TEST_STRIPE_SECRET_KEY=your test secret key"
     * set "GOOGLE_APPLICATION_CREDENTIALS=path to your google credential json file"
+    * set "stripe_endpoint_secret="
 * The same folder find deactivate.bat and add the following strings before _:END_:
 	* set FLASK_APP=
 	* set env=
@@ -131,6 +132,7 @@ python -m venv venv
     * set TEST_STRIPE_PUBLISHABLE_KEY="
     * set TEST_STRIPE_SECRET_KEY=
     * set GOOGLE_APPLICATION_CREDENTIALS=
+    * set stripe_endpoint_secret=
 
 Note: if you use privateemail.com for your email you can set up the following settings:
 ```
