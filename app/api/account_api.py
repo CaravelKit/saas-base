@@ -38,7 +38,7 @@ class AccountSubscriptionPaidUpdate(Resource):
         interval_count = 0
         try:
             event = stripe.Webhook.construct_event(
-                request.get_data(), sig_header, current_app.config['MAIL_SUBJECT_PREFIX']
+                request.get_data(), sig_header, current_app.config['STRIPE_ENDPOINT_SECRET']
             )
         except ValueError as e:
             # Invalid payload
