@@ -38,7 +38,7 @@ class Config(object):
 class ProductionConfig(Config):
     ENV = 'prod'
     DEBUG = False
-    SAAS_API_URL = 'https://www.saasidea.io'
+    SAAS_API_URL = 'https://api.caravelkit.com'
     STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
     STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
@@ -89,8 +89,10 @@ class ConfigHelper:
                 return config[args[1]]
         
         # Check os env var
-        if ConfigHelper.__check_config_name(os.environ['env']):
-            return config[os.environ['env']]
+        env = os.environ.get('env')
+        if ConfigHelper.__check_config_name(env):
+            if config.get(env):
+                return config.get(env)
 
         # Nothing worked, return default config
         return config['default']
