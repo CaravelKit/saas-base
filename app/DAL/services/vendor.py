@@ -107,17 +107,12 @@ class Vendor_Stripe(Vendor_base):
     
     def get_default_trial_plan_id(self):
         plans_list = stripe.Plan.list()
-        plan_default_id = None
-        for plan in plans_list.data:
-            if plan['metadata'] is not None:
-                if 'default' in plan['metadata']:
-                    if plan['metadata']['default'] == 'trial':
-                        plan_default_id = plan['id']
-                        break 
-        if plan_default_id is None:
-            if len(plans_list.data) > 0:
-                plan_default_id = plans_list.data[0]['id']
-        return plan_default_id
+        plan_default = next((plan for plan in plans_list if (plan.get('metadata') and 
+            plan.get('metadata').get('default') == 'trial')), None)
+        if plan_default is not None:
+            return plan_default['id']
+        else:
+            return None
 
     def get_public_key(self):
         return self.keys['publishable_key']

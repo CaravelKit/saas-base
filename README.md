@@ -91,8 +91,8 @@ Before we start make sure you have installed Python 3 and Node.js. Please follow
 
 1. Download the full zip or pull code from the repository, [here](https://help.github.com/articles/which-remote-url-should-i-use/) you can find full instruction:
 ```
-git clone https://github.com/CaravelKit/saas-template
-cd saas-boilerplate
+git clone https://github.com/CaravelKit/saas-base
+cd saas-base
 ```
 2. Create a virtual environment (not necessarily but highly recommended):
 ```
