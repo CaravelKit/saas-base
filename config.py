@@ -15,13 +15,15 @@ class Config(object):
     ENV = ''
     DEBUG = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = ''
+    SQLALCHEMY_DATABASE_URI = os.environ.get('db_url') # Store it in the hosting config
     CSRF_KEY = ''
-    MAIL_SUBJECT_PREFIX = 'Your company name'
+    SECRET_KEY = os.environ.get('secret_key') # Store it in the hosting config
+    SECRET_SALT = os.environ.get('secret_salt') # Store it in the hosting config
+    MAIL_SUBJECT_PREFIX = 'Your company email prefix'
     COMPANY_NAME = 'Your company name' # Change to your company name
     TRIAL_PERIOD_IN_DAYS = 14 # Change to your trial (in days, it's 2 weeks by default). Put 0 if no trial
     SAAS_API_KEY = os.environ.get('saas_api_key') # Your api key for project-member
-    SAAS_API_EMAIL = 'your_email_registered_in_project' # Your email as project-member
+    SAAS_API_EMAIL = os.environ.get('saas_api_email')
     # Mail sending settings (For privateemail by default)
     MAIL_SERVER = os.environ.get('mail_server')
     MAIL_PORT = os.environ.get('mail_port')
@@ -41,6 +43,7 @@ class ProductionConfig(Config):
     SAAS_API_URL = 'https://api.caravelkit.com'
     STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
     STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+    
 
     # The values below MUST store in the hosting config variables
     #SQLALCHEMY_DATABASE_URI
@@ -51,11 +54,8 @@ class DevelopmentConfig(Config):
     ENV = 'dev'
     DEVELOPMENT = True
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('db_url') # Store it in the hosting config
-    SECRET_KEY = os.environ.get('secret_key') # Store it in the hosting config
-    SECRET_SALT = os.environ.get('secret_salt') # Store it in the hosting config
     TRIAL_PERIOD_IN_DAYS = 1 # Change it or remove it
-    SAAS_API_URL = 'http://127.0.0.1:5000'
+    SAAS_API_URL = 'https://api.caravelkit.com'
     STRIPE_PUBLISHABLE_KEY = os.environ.get('TEST_STRIPE_PUBLISHABLE_KEY')
     STRIPE_SECRET_KEY = os.environ.get('TEST_STRIPE_SECRET_KEY')
     SAAS_API_KEY = os.environ.get('saas_api_key')
