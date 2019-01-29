@@ -25,3 +25,9 @@ app/migrations
 
 # Settings
 .vscode
+
+# Elastic Beanstalk Files
+.ebextensions
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
