@@ -9,25 +9,6 @@ from flask_login import login_user, logout_user, login_required, current_user
 
 account_api = Namespace('account', path='/api/account')
 
-class AccountQuotaSchema(db_schema.Schema):
-    class Meta:
-        # Fields to expose
-        fields = ('plan_name', 
-            'user_project_number', 'user_project_members_number', 'api_calls_monthly_number', 
-            'projects_left', 'user_project_members_left', 'api_calls_monthly_left')
-
-account_quota_shema = AccountQuotaSchema()
-
-@account_api.route('/quotas')
-class AccountQuota(Resource):
-    @login_required
-    def get(self):
-        acc_object = account_dal.get_account()
-        return jsonify({
-            'result': True,
-            'quotas': account_quota_shema.dump(acc_object).data
-        })
-
 # This endpoint will hit when next subscription paid - by Stripe.
 @account_api.route('/stripepaid')
 class AccountSubscriptionPaidUpdate(Resource):
