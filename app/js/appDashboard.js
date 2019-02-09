@@ -113,7 +113,7 @@ var router = new VueRouter({
 });
 
 var timeFormatter = function(value){
-    return (value ? moment(new Date("2015-06-17 14:24:36")).format("YYYY-MM-DD HH:mm:ss"): 'date/time is undefined');
+    return (value ? moment(value).format("YYYY-MM-DD HH:mm:ss"): '-- ---');
 };
 Vue.filter('formatDt', timeFormatter);
 
