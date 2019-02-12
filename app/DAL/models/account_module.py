@@ -92,15 +92,19 @@ class Account(db.Model):
 
     def start_trial(self):
         vendor = get_vendor()
-        self.plan_id = vendor.get_default_trial_plan_id()
-        trial_days = current_app.config['TRIAL_PERIOD_IN_DAYS']
-        self.trial_expiration = DateTime.today() + TimeDelta(days = trial_days)
-        self.account_status = AccountStatus.trial.value
-        str_valid_time = self.trial_expiration.strftime('%d, %b %Y %H:%M')
-        self.account_status_text = ('Your trial is activated and valid till ' + 
-            str_valid_time)
+        if vendor.keys['publishable_key'] is not None and vendor.keys['secret_key'] is not None:
+            self.plan_id = vendor.get_default_trial_plan_id()
+            trial_days = current_app.config['TRIAL_PERIOD_IN_DAYS']
+            self.trial_expiration = DateTime.today() + TimeDelta(days = trial_days)
+            self.account_status = AccountStatus.trial.value
+            str_valid_time = self.trial_expiration.strftime('%d, %b %Y %H:%M')
+            self.account_status_text = ('Your trial is activated and valid till ' + 
+                str_valid_time)
+        else:
+            self.account_status_text = ('Account was not activated because payment vendors keys have not been provided')
         db.session.add(self)
         db.session.flush()
-        account_event = self.create_history_event(EventType.trial_started, 'Started a trial, expiration date is ' + str_valid_time)
-
+        if self.account_status == AccountStatus.trial.value:
+            account_event = self.create_history_event(EventType.trial_started, 
+                'Started a trial, expiration date is ' + str_valid_time)
     
