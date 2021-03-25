@@ -21,7 +21,7 @@ psycopg2==2.7.6.1
 pycparser==2.19
 python-dateutil==2.7.5
 python-editor==1.0.3
-PyYAML==3.13
+PyYAML==5.4
 requests==2.20.1
 Requires==0.0.3
 six==1.11.0
