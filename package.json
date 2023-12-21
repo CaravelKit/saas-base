@@ -30,7 +30,7 @@
         "file-loader": "^2.0.0",
         "jquery": "^3.3.1",
         "jquery.easing": "^1.4.1",
-        "lodash": "^4.17.11",
+        "lodash": "^4.17.21",
         "moment": "^2.22.2",
         "popper.js": "^1.14.4",
         "vue": "^2.5.17",
